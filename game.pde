@@ -31,6 +31,10 @@ int splashEnd = 75;
 float splashFadeSpeed = 255.0 / (splashEnd - splashStart);
 
 
+/* INTRO */
+RCurve introCurve;
+
+
 
 void setup() {
   size(400, 400);
@@ -39,6 +43,8 @@ void setup() {
   smooth();
   img_splash = loadImage("splash.png");
   roboto = loadFont("Roboto-LightItalic-20.vlw");
+  introCurve = new RCurve();
+  introCurve.createPoints(1.0, 40,40,width/2,height/2,width/2,height/2,width-40,height-40);
 }
 
 void draw() {
@@ -90,7 +96,7 @@ void drawIntroScreen() {
   fill(#009999);
   textFont(roboto);
   text("trace the shape", 200, 45);
-  
+  introCurve.drawCurve(0.3, 0.3, #009999, 30); 
 }
 
 
