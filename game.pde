@@ -1,4 +1,12 @@
 color bkgd = #f2f2f2; 
+color textT = #009999;
+color textG = #aaaaaa; // same as at the end
+color shapeDefault = #CCCCCC;
+color userInput = #008888;
+color shapeConfirm = #000000; // at 8% opacity or 20.4 : 255
+color statusDefault = #DDDDDD;
+color statusActive = #BBBBBB; 
+color statusComplete = #008888;
 PFont roboto;
 
 /* STATES */
