@@ -10,7 +10,8 @@ color statusComplete = #008888;
 
 PFont roboto;
 
-// stroke weight = 24px
+int pathStrokeWeight = 24;
+
 // circles = 20 x 20
 // 10px of space between each circle
 
@@ -26,25 +27,25 @@ int currentState = STATE_START;
 
 /* SPLASH */
 PImage img_splash;
-int splashStart = 60;
-int splashEnd = 75;
+int splashStart = 120;
+int splashEnd = 150;
 float splashFadeSpeed = 255.0 / (splashEnd - splashStart);
 
 
 /* INTRO */
 RCurve introCurve;
-
+int introFrameCount;
 
 
 void setup() {
   size(400, 400);
   background(bkgd);
-  frameRate(30);
+  frameRate(60);
   smooth();
   img_splash = loadImage("splash.png");
   roboto = loadFont("Roboto-LightItalic-20.vlw");
   introCurve = new RCurve();
-  introCurve.createPoints(1.0, 40,40,width/2,height/2,width/2,height/2,width-40,height-40);
+  introCurve.createPoints(1.0, 40, 90, 40, 90, 360, 340, 360, 340);
 }
 
 void draw() {
@@ -62,6 +63,7 @@ void draw() {
 void goToStateIntro() {
   currentState = STATE_INTRO;
   println("We're now introducing the game.");
+  introFrameCount = frameCount;
 }
 
 void goToStateGame() {
@@ -96,7 +98,18 @@ void drawIntroScreen() {
   fill(#009999);
   textFont(roboto);
   text("trace the shape", 200, 45);
-  introCurve.drawCurve(0.3, 0.3, #009999, 30); 
+  float startPathIntro = ((frameCount - introFrameCount) % 150)/100.0;
+  introCurve.drawCurve(startPathIntro, 0.4, shapeDefault, pathStrokeWeight); 
+  
 }
+
+
+
+
+
+
+
+
+
 
 
