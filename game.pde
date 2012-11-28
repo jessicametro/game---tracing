@@ -7,7 +7,13 @@ color shapeConfirm = #000000; // at 8% opacity or 20.4 : 255
 color statusDefault = #DDDDDD;
 color statusActive = #BBBBBB; 
 color statusComplete = #008888;
+
 PFont roboto;
+
+// stroke weight = 24px
+// circles = 20 x 20
+// 10px of space between each circle
+
 
 /* STATES */
 int STATE_START = 0;
