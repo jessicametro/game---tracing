@@ -98,12 +98,28 @@ void drawIntroScreen() {
   fill(#009999);
   textFont(roboto);
   text("trace the shape", 200, 45);
-  float startPathIntro = ((frameCount - introFrameCount) % 150)/100.0;
-  introCurve.drawCurve(startPathIntro, 0.4, shapeDefault, pathStrokeWeight); 
+  /*int demoIntroTimeout = if (frameCount > 150) {
+    stop the animation;
+  }
+  float startPathIntro = ((frameCount - introFrameCount) % demoIntroTimeout/100.0; // change 150
+  float startPathIntro = ((frameCount - introFrameCount) % if (frameCount < 150) { draw the curve} else { wait for input })/100.0;
+  //float startPathIntro = ((frameCount - introFrameCount) % 150)/100.0; // change 150
+  introCurve.drawCurve(startPathIntro, 0.4, shapeDefault, pathStrokeWeight); */
   
+  if (frameCount < 150) {
+    startPathIntro;
+  } else {
+    end?;
+  }
+  float startPathIntro = ((frameCount - introFrameCount) % 150)/100.0;
+  introCurve.drawCurve(startPathIntro, 0.4, shapeDefault, pathStrokeWeight);
 }
 
 
+
+For the first atartFrameCoint frames, draw it with full opacity
+Between startFrameVound and wndFrameCount make it fade
+And after endFrameCount wait for the usrt to draw stuff
 
 
 
