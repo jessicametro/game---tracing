@@ -12,6 +12,8 @@ PFont roboto;
 
 int pathStrokeWeight = 24;
 
+float scoreMin = 1.1;
+
 // circles = 20 x 20
 // 10px of space between each circle
 
@@ -35,6 +37,9 @@ float splashFadeSpeed = 255.0 / (splashEnd - splashStart);
 /* INTRO */
 RCurve introCurve;
 int introFrameCount;
+DollarRecognizer introDOR = new DollarRecognizer();  // gesture recognition
+ArrayList<Point> userPath = new ArrayList<Point>();  // this is the container for points the user inputs
+boolean introSuccess = false;
 
 
 void setup() {
@@ -45,7 +50,8 @@ void setup() {
   img_splash = loadImage("splash.png");
   roboto = loadFont("Roboto-LightItalic-20.vlw");
   introCurve = new RCurve();
-  introCurve.createPoints(1.0, 40, 90, 40, 90, 360, 340, 360, 340);
+  introCurve.createPoints(3.0, 40, 90, 40, 90, 360, 340, 360, 340);
+  introDOR.addGesture("intro", introCurve.points);  // gesture recognition, passes points from RCurve
 }
 
 void draw() {
@@ -97,35 +103,37 @@ void drawIntroScreen() {
   textAlign(CENTER);
   fill(#009999);
   textFont(roboto);
-  text("trace the shape", 200, 45);
-  /*int demoIntroTimeout = if (frameCount > 150) {
-    stop the animation;
+  text("trace the shape", 200, 45);  
+  if (frameCount - introFrameCount < 150) {
+    float startPathIntro = ((frameCount - introFrameCount))/100.0;
+    introCurve.drawCurve(startPathIntro, 0.4, shapeDefault, pathStrokeWeight);
+  }  
+  noFill();
+  stroke(userInput);
+  strokeWeight(pathStrokeWeight);
+  strokeJoin(ROUND);
+  beginShape();
+    for (int i = 0; i < userPath.size(); i++) {
+      vertex(userPath.get(i).X, userPath.get(i).Y);  // array = userPath[i].x but this uses X also an array list = userPath.get(i).X
+    }
+  endShape();
+  if (introSuccess == true) {
+    image(img_splash, 0, 0);
   }
-  float startPathIntro = ((frameCount - introFrameCount) % demoIntroTimeout/100.0; // change 150
-  float startPathIntro = ((frameCount - introFrameCount) % if (frameCount < 150) { draw the curve} else { wait for input })/100.0;
-  //float startPathIntro = ((frameCount - introFrameCount) % 150)/100.0; // change 150
-  introCurve.drawCurve(startPathIntro, 0.4, shapeDefault, pathStrokeWeight); */
-  
-  if (frameCount < 150) {
-    startPathIntro;
-  } else {
-    end?;
-  }
-  float startPathIntro = ((frameCount - introFrameCount) % 150)/100.0;
-  introCurve.drawCurve(startPathIntro, 0.4, shapeDefault, pathStrokeWeight);
 }
 
 
 
-For the first atartFrameCoint frames, draw it with full opacity
-Between startFrameVound and wndFrameCount make it fade
-And after endFrameCount wait for the usrt to draw stuff
-
-
-
-
-
-
-
-
-
+/* user's input */
+void mouseDragged() { 
+  userPath.add(new Point(mouseX, mouseY));
+}
+void mouseReleased() {
+  Result val = introDOR.recognize(userPath, true); 
+  println("Recnogized: "+val.name+" Score:" +val.score);
+  if (val.score > scoreMin) {
+    println("Success!");
+    introSuccess = true;
+  }
+  userPath.clear();
+}
