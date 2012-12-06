@@ -127,6 +127,7 @@ GameLevel createGameLevel(int levelNum) {
     newLevel.curve.addPoint(300,310);
     newLevel.curve.addPoint(340,190);
     newLevel.curve.addPoint(100,110);
+    newLevel.curve.addPoint(60,310);
     newLevel.curve.endLines();
     newLevel.scoreMin = scoreMin;
   } else if (levelNum == 4) {         // Level Five : Five Sides (connected)
@@ -139,6 +140,43 @@ GameLevel createGameLevel(int levelNum) {
     newLevel.curve.addPoint(170,218);
     newLevel.curve.endLines();
     newLevel.scoreMin = scoreMin;
+  } else if (levelNum == 5) {         // Level Six : Six Sides (connected)
+    newLevel.curve.beginLines(3.0);
+    newLevel.curve.addPoint(180,260);
+    newLevel.curve.addPoint(160,330);
+    newLevel.curve.addPoint(310,340);
+    newLevel.curve.addPoint(220,220);
+    newLevel.curve.addPoint(310,100);
+    newLevel.curve.addPoint(70,130);
+    newLevel.curve.addPoint(180,260);
+    newLevel.curve.endLines();
+    newLevel.scoreMin = scoreMin;
+  } else if (levelNum == 6) {         // Level Seven : Seven Sides (connected..arrow)
+    newLevel.curve.beginLines(3.0);
+    newLevel.curve.addPoint(178,350);
+    newLevel.curve.addPoint(94,230);
+    newLevel.curve.addPoint(158,90);
+    newLevel.curve.addPoint(205,190);
+    newLevel.curve.addPoint(335,188);
+    newLevel.curve.addPoint(237,280);
+    newLevel.curve.addPoint(314,350);
+    newLevel.curve.addPoint(178,350);
+    newLevel.curve.endLines();
+    newLevel.scoreMin = scoreMin;
+  } else if (levelNum == 7) {         // Level Eight : Eight Sides (connected..arrow)
+    newLevel.curve.beginLines(3.0);
+    newLevel.curve.addPoint(244,190);
+    newLevel.curve.addPoint(306,363);
+    newLevel.curve.addPoint(106,363);
+    newLevel.curve.addPoint(222,318);
+    newLevel.curve.addPoint(186,208);
+    newLevel.curve.addPoint(109,235);
+    newLevel.curve.addPoint(186,84);
+    newLevel.curve.addPoint(316,164);
+    newLevel.curve.addPoint(244,190);
+    newLevel.curve.endLines();
+    newLevel.scoreMin = scoreMin;
+  }
   newLevel.recognizer.addGesture(newLevel.name, newLevel.curve.points);
   return newLevel;
 }
@@ -189,7 +227,7 @@ void goToStateGame() {
 }
 
 void goToLevel(int levelNumber) {
-  if (levelNumber < 5) {                        ////////////////// This is the total number of levels!
+  if (levelNumber < 7) {                        ////////////////// This is the total number of levels!
     level = createGameLevel(levelNumber);
   } else {
     goToStateDone();
