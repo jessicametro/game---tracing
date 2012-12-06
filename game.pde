@@ -45,7 +45,8 @@ int introEnd = 120;
 
 
 /* GAME */
-GameLevel level = new GameLevel();
+GameLevel level;
+
 
 class GameLevel {
   int number;
@@ -59,6 +60,9 @@ class GameLevel {
   float scoreMin;
   float scoreUser;
 }
+
+int levelEnd = 120;
+
 
 
 /* DONE */
@@ -74,8 +78,7 @@ void setup() {
   roboto = loadFont("Roboto-LightItalic-20.vlw");
   introCurve = new RCurve();
   introCurve.createPoints(3.0, 40, 90, 40, 90, 360, 340, 360, 340);
-  introDOR.addGesture("intro", introCurve.points);  // gesture recognition, passes points from RCurve
-  setupGameLevel1();
+  introDOR.addGesture("intro", introCurve.points);  // gesture recognition, passes points from RCurve 
 }
 
 
@@ -87,16 +90,28 @@ void setupLevel(GameLevel level, RCurve myCurve) {
 */
 
 
-void setupGameLevel1() {
-  level.number = 1;
-  level.name = "One";
-  level.startFrame = 0;
-  level.curve = new RCurve();
-  level.curve.createPoints(3.0, 40, 90, 40, 90, 360, 340, 360, 340);
-  level.recognizer.addGesture(level.name, level.curve.points);
-  level.success = false;
-  
+GameLevel createGameLevel(int levelNum) {
+  GameLevel newLevel = new GameLevel();
+  newLevel.number = levelNum;
+  newLevel.name = "One";
+  newLevel.startFrame = 0;
+  newLevel.curve = new RCurve();
+  newLevel.curve.createPoints(3.0, 40, 90, 40, 90, 360, 340, 360, 340);
+  newLevel.recognizer.addGesture(newLevel.name, newLevel.curve.points);
+  newLevel.scoreMin = scoreMin;
+  newLevel.success = false;
+  return newLevel;
 }
+
+
+
+//float asdf(float n, float z) {
+//  return n+z;
+//}
+//
+//float q = asdf(1.0,2.0);
+//println(q);
+//println(z);
 
 
 void draw() {
@@ -123,10 +138,15 @@ void goToStateIntro() {
 void goToStateGame() {
   currentState = STATE_GAME;
   println("We're now playing the game.");
-  goToLevel(1);
+  goToLevel(0);
 }
 
 void goToLevel(int levelNumber) {
+  if (levelNumber < 2) {
+    level = createGameLevel(levelNumber);
+  } else {
+    goToStateDone();
+  }
   level.startFrame = frameCount;
 }
 
@@ -182,25 +202,56 @@ void drawIntroScreen() {
 
 /* user's input */
 void mouseDragged() { 
-  userPath.add(new Point(mouseX, mouseY));
+  if (currentState == STATE_INTRO) {
+    userPath.add(new Point(mouseX, mouseY));
+  } else if (currentState == STATE_GAME) {
+   level.userPath.add(new Point(mouseX, mouseY));
+  }
 }
 void mouseReleased() {
-  Result val = introDOR.recognize(userPath, true); 
-  println("Recnogized: "+val.name+" Score:" +val.score);
-  if (val.score > scoreMin) {
-    println("Success!");
-    introSuccess = true;
-    introSuccessFrame = frameCount;
+  if (currentState == STATE_INTRO) {
+    Result val = introDOR.recognize(userPath, true); 
+    println("Recnogized: "+val.name+" Score:" +val.score);
+    if (val.score > scoreMin) {
+      println("Success!");
+      introSuccess = true;
+      introSuccessFrame = frameCount;
+    }
+    userPath.clear();
+  } else if (currentState == STATE_GAME) {
+    Result val = level.recognizer.recognize(level.userPath, true); 
+    println("Recnogized: "+val.name+" Score:" +val.score);
+    if (val.score > level.scoreMin) {
+      println("Success!");
+      level.success = true;
+      level.successFrame = frameCount;
+      level.scoreUser = val.score;
+    }
+    level.userPath.clear();
   }
-  userPath.clear();
 }
 
 
 
 void drawGameScreen() {
   if (frameCount - level.startFrame < 150) {
-    float startPathIntro = ((frameCount - level.startFrame))/100.0;
-    level.curve.drawCurve(startPathIntro, 0.4, shapeDefault, pathStrokeWeight);
+    float startPathGame = ((frameCount - level.startFrame))/100.0;
+    level.curve.drawCurve(startPathGame, 0.4, shapeDefault, pathStrokeWeight);
   } 
+  noFill();
+  stroke(userInput);
+  strokeWeight(pathStrokeWeight);
+  strokeJoin(ROUND);
+  beginShape();
+    for (int i = 0; i < level.userPath.size(); i++) {
+      vertex(level.userPath.get(i).X, level.userPath.get(i).Y);  // array = userPath[i].x but this uses X also an array list = userPath.get(i).X
+    }
+  endShape();
+  if (level.success == true) {
+    image(img_splash, 0, 0);  // DON'T FORGET TO UPDATE THIS IMAGE!
+  }
+  if (level.success == true && (frameCount - level.successFrame) >= levelEnd) {
+    goToLevel(level.number+1);  // go to NEXT level (+1)
+  }
 }
 
