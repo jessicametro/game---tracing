@@ -6,10 +6,36 @@
 class RCurve {
   float[] points;
   
+  ArrayList<Point> pointList = new ArrayList<Point>();
+  float stepsize;
+  
+  void beginLines(float stepsize) {
+     pointList.clear();
+     this.stepsize = stepsize;
+  }
+  void addPoint(float x, float y) {
+    pointList.add(new Point(x,y));
+  }
+  void endLines() {
+    float[][] curves = new float[pointList.size()-1][];
+    float lastx = pointList.get(0).X;
+    float lasty = pointList.get(0).Y;
+    for (int i=1; i<pointList.size(); i++) {
+      float x = pointList.get(i).X;
+      float y = pointList.get(i).Y;
+      curves[i-1] = new float[] {lastx,lasty,lastx,lasty,x,y,x,y};
+      lastx = x;
+      lasty = y;
+    }
+    createPoints(stepsize, curves);
+  }
+  
+  
   void createPoints(float stepsize, int x1, int y1, int x2, int y2, int x3, int y3, int x4, int y4 ) {
     points = createRCurvePoints(stepsize, new float[][] { {x1,y1,x2,y2,x3,y3,x4,y4}});
   }
   void createPoints(float stepsize, float[][] beziercurves ) {
+    println("Creating points");
     points = createRCurvePoints(stepsize, beziercurves);
   }
   

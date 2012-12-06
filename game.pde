@@ -50,7 +50,7 @@ GameLevel level;
 
 class GameLevel {
   int number;
-  String name;
+  String name="";
   int startFrame;
   RCurve curve;
   DollarRecognizer recognizer = new DollarRecognizer();  // gesture recognition
@@ -93,17 +93,38 @@ void setupLevel(GameLevel level, RCurve myCurve) {
 GameLevel createGameLevel(int levelNum) {
   GameLevel newLevel = new GameLevel();
   newLevel.number = levelNum;
-  newLevel.name = "One";
   newLevel.startFrame = 0;
-  newLevel.curve = new RCurve();
-  newLevel.curve.createPoints(3.0, 40, 90, 40, 90, 360, 340, 360, 340);
-  newLevel.recognizer.addGesture(newLevel.name, newLevel.curve.points);
-  newLevel.scoreMin = scoreMin;
   newLevel.success = false;
+  newLevel.curve = new RCurve();
+
+  if (levelNum == 0) {                 // Level One
+    newLevel.curve.beginLines(3.0);
+    newLevel.curve.addPoint(40,90);
+    newLevel.curve.addPoint(90,90);
+    newLevel.curve.addPoint(340,360);
+    newLevel.curve.endLines();
+    newLevel.scoreMin = scoreMin;
+  } else if (levelNum == 1) {         // Level Two
+    newLevel.curve.beginLines(3.0);
+    newLevel.curve.addPoint(40,90);
+    newLevel.curve.addPoint(340,90);
+    newLevel.curve.addPoint(340,360);
+    newLevel.curve.addPoint(40,360);
+    newLevel.curve.endLines();
+    newLevel.scoreMin = scoreMin;
+  } 
+  newLevel.recognizer.addGesture(newLevel.name, newLevel.curve.points);
   return newLevel;
 }
 
-
+//RCurve makeACurveOfLength(int length) {
+//  RCurve curve = new RCurve();
+//  for (int i=0; i < length; i++) {
+//    curve.addPoints(......);
+//  }
+//  
+//  return curve;
+//}
 
 //float asdf(float n, float z) {
 //  return n+z;
