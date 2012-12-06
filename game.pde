@@ -40,6 +40,29 @@ int introFrameCount;
 DollarRecognizer introDOR = new DollarRecognizer();  // gesture recognition
 ArrayList<Point> userPath = new ArrayList<Point>();  // this is the container for points the user inputs
 boolean introSuccess = false;
+int introSuccessFrame;
+int introEnd = 120;
+
+
+/* GAME */
+GameLevel level = new GameLevel();
+
+class GameLevel {
+  int number;
+  String name;
+  int startFrame;
+  RCurve curve;
+  DollarRecognizer recognizer = new DollarRecognizer();  // gesture recognition
+  ArrayList<Point> userPath = new ArrayList<Point>();  // this is the container for points the user inputs
+  boolean success;
+  int successFrame;
+  float scoreMin;
+  float scoreUser;
+}
+
+
+/* DONE */
+
 
 
 void setup() {
@@ -52,7 +75,29 @@ void setup() {
   introCurve = new RCurve();
   introCurve.createPoints(3.0, 40, 90, 40, 90, 360, 340, 360, 340);
   introDOR.addGesture("intro", introCurve.points);  // gesture recognition, passes points from RCurve
+  setupGameLevel1();
 }
+
+
+/*
+void setupLevel(GameLevel level, RCurve myCurve) {
+  level.curve = myCurve;
+  level.recognizer.addGesture(name, level.curve.points);
+}
+*/
+
+
+void setupGameLevel1() {
+  level.number = 1;
+  level.name = "One";
+  level.startFrame = 0;
+  level.curve = new RCurve();
+  level.curve.createPoints(3.0, 40, 90, 40, 90, 360, 340, 360, 340);
+  level.recognizer.addGesture(level.name, level.curve.points);
+  level.success = false;
+  
+}
+
 
 void draw() {
   background(bkgd);
@@ -61,6 +106,9 @@ void draw() {
   }
   if (currentState == STATE_INTRO) {
     drawIntroScreen();
+  }
+  if (currentState == STATE_GAME) {
+    drawGameScreen();
   }
 }
 
@@ -75,6 +123,11 @@ void goToStateIntro() {
 void goToStateGame() {
   currentState = STATE_GAME;
   println("We're now playing the game.");
+  goToLevel(1);
+}
+
+void goToLevel(int levelNumber) {
+  level.startFrame = frameCount;
 }
 
 void goToStateDone() {
@@ -118,7 +171,10 @@ void drawIntroScreen() {
     }
   endShape();
   if (introSuccess == true) {
-    image(img_splash, 0, 0);
+    image(img_splash, 0, 0);  // DON'T FORGET TO UPDATE THIS IMAGE!
+  }
+  if (introSuccess == true && (frameCount - introSuccessFrame) >= introEnd) {
+    goToStateGame();
   }
 }
 
@@ -134,6 +190,17 @@ void mouseReleased() {
   if (val.score > scoreMin) {
     println("Success!");
     introSuccess = true;
+    introSuccessFrame = frameCount;
   }
   userPath.clear();
 }
+
+
+
+void drawGameScreen() {
+  if (frameCount - level.startFrame < 150) {
+    float startPathIntro = ((frameCount - level.startFrame))/100.0;
+    level.curve.drawCurve(startPathIntro, 0.4, shapeDefault, pathStrokeWeight);
+  } 
+}
+
