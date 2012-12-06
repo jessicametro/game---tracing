@@ -3,7 +3,7 @@ color textT = #009999;
 color textG = #aaaaaa; // same as at the end
 color shapeDefault = #CCCCCC;
 color userInput = #008888;
-color shapeConfirm = #000000; // at 8% opacity or 20.4 : 255
+color shapeConfirm = #000000; // at 8% opacity or 20.4 : 255  ... actually #CCCCCC at 50%
 color statusDefault = #DDDDDD;
 color statusActive = #BBBBBB; 
 color statusComplete = #008888;
@@ -35,6 +35,7 @@ float splashFadeSpeed = 255.0 / (splashEnd - splashStart);
 
 
 /* INTRO */
+PImage img_great;
 RCurve introCurve;
 int introFrameCount;
 DollarRecognizer introDOR = new DollarRecognizer();  // gesture recognition
@@ -75,6 +76,7 @@ void setup() {
   frameRate(60);
   smooth();
   img_splash = loadImage("splash.png");
+  img_great = loadImage("great.png");
   roboto = loadFont("Roboto-LightItalic-20.vlw");
   introCurve = new RCurve();
   introCurve.createPoints(3.0, 40, 90, 40, 90, 360, 340, 360, 340);
@@ -97,22 +99,46 @@ GameLevel createGameLevel(int levelNum) {
   newLevel.success = false;
   newLevel.curve = new RCurve();
 
-  if (levelNum == 0) {                 // Level One
+  if (levelNum == 0) {                 // Level One : Circle
     newLevel.curve.beginLines(3.0);
     newLevel.curve.addPoint(40,90);
     newLevel.curve.addPoint(90,90);
     newLevel.curve.addPoint(340,360);
     newLevel.curve.endLines();
     newLevel.scoreMin = scoreMin;
-  } else if (levelNum == 1) {         // Level Two
+  } else if (levelNum == 1) {         // Level Two : Two Sides (open)
     newLevel.curve.beginLines(3.0);
-    newLevel.curve.addPoint(40,90);
-    newLevel.curve.addPoint(340,90);
-    newLevel.curve.addPoint(340,360);
-    newLevel.curve.addPoint(40,360);
+    newLevel.curve.addPoint(120,110);
+    newLevel.curve.addPoint(320,310);
+    newLevel.curve.addPoint(80,270);
     newLevel.curve.endLines();
     newLevel.scoreMin = scoreMin;
-  } 
+  } else if (levelNum == 2) {         // Level Three : Three Sides (connected)
+    newLevel.curve.beginLines(3.0);
+    newLevel.curve.addPoint(290,120);
+    newLevel.curve.addPoint(90,140);
+    newLevel.curve.addPoint(140,340);
+    newLevel.curve.addPoint(290,120);
+    newLevel.curve.endLines();
+    newLevel.scoreMin = scoreMin;
+  } else if (levelNum == 3) {         // Level Four : Four Sides (connected)
+    newLevel.curve.beginLines(3.0);
+    newLevel.curve.addPoint(60,310);
+    newLevel.curve.addPoint(300,310);
+    newLevel.curve.addPoint(340,190);
+    newLevel.curve.addPoint(100,110);
+    newLevel.curve.endLines();
+    newLevel.scoreMin = scoreMin;
+  } else if (levelNum == 4) {         // Level Five : Five Sides (connected)
+    newLevel.curve.beginLines(3.0);
+    newLevel.curve.addPoint(170,218);
+    newLevel.curve.addPoint(210,100);
+    newLevel.curve.addPoint(85,100);
+    newLevel.curve.addPoint(95,340);
+    newLevel.curve.addPoint(330,345);
+    newLevel.curve.addPoint(170,218);
+    newLevel.curve.endLines();
+    newLevel.scoreMin = scoreMin;
   newLevel.recognizer.addGesture(newLevel.name, newLevel.curve.points);
   return newLevel;
 }
@@ -163,7 +189,7 @@ void goToStateGame() {
 }
 
 void goToLevel(int levelNumber) {
-  if (levelNumber < 2) {
+  if (levelNumber < 5) {                        ////////////////// This is the total number of levels!
     level = createGameLevel(levelNumber);
   } else {
     goToStateDone();
@@ -212,7 +238,7 @@ void drawIntroScreen() {
     }
   endShape();
   if (introSuccess == true) {
-    image(img_splash, 0, 0);  // DON'T FORGET TO UPDATE THIS IMAGE!
+    image(img_great, 0, 0);  // DON'T FORGET TO UPDATE THIS IMAGE!
   }
   if (introSuccess == true && (frameCount - introSuccessFrame) >= introEnd) {
     goToStateGame();
@@ -269,7 +295,7 @@ void drawGameScreen() {
     }
   endShape();
   if (level.success == true) {
-    image(img_splash, 0, 0);  // DON'T FORGET TO UPDATE THIS IMAGE!
+    image(img_great, 0, 0);  // DON'T FORGET TO UPDATE THIS IMAGE!
   }
   if (level.success == true && (frameCount - level.successFrame) >= levelEnd) {
     goToLevel(level.number+1);  // go to NEXT level (+1)
