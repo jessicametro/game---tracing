@@ -260,17 +260,18 @@ void goToLevel(int levelNumber) {
     background(bkgd);
     image(img_win, 0, 0);
     tint(255);
+    noStroke();
     fill(statusComplete);
-    ellipse(51, 40, 10, 10);
-    ellipse(84, 40, 10, 10);
-    ellipse(117, 40, 10, 10);
-    ellipse(150, 40, 10, 10);
-    ellipse(183, 40, 10, 10);
-    ellipse(216, 40, 10, 10);
-    ellipse(249, 40, 10, 10);
-    ellipse(282, 40, 10, 10);
-    ellipse(315, 40, 10, 10);
-    ellipse(348, 40, 10, 10);
+    ellipse(51, 40, 20, 20);
+    ellipse(84, 40, 20, 20);
+    ellipse(117, 40, 20, 20);
+    ellipse(150, 40, 20, 20);
+    ellipse(183, 40, 20, 20);
+    ellipse(216, 40, 20, 20);
+    ellipse(249, 40, 20, 20);
+    ellipse(282, 40, 20, 20);
+    ellipse(315, 40, 20, 20);
+    ellipse(348, 40, 20, 20);
   } else {
     goToStateDone();
   }
