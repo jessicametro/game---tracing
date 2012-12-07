@@ -348,6 +348,7 @@ void mouseReleased() {
 
 
 void drawGameScreen() {
+  drawStatusDots();
   if (frameCount - level.startFrame < 150) {
     float startPathGame = ((frameCount - level.startFrame))/100.0;
     level.curve.drawCurve(startPathGame, 0.4, shapeDefault, pathStrokeWeight);
@@ -369,3 +370,19 @@ void drawGameScreen() {
   }
 }
 
+
+
+void drawStatusDots() {
+  noStroke();
+  fill(shapeDefault);
+  ellipse(51, 40, 20, 20);
+  ellipse(84, 40, 20, 20);
+  ellipse(117, 40, 20, 20);
+  ellipse(150, 40, 20, 20);
+  ellipse(183, 40, 20, 20);
+  ellipse(216, 40, 20, 20);
+  ellipse(249, 40, 20, 20);
+  ellipse(282, 40, 20, 20);
+  ellipse(315, 40, 20, 20);
+  ellipse(348, 40, 20, 20);
+}
