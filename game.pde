@@ -258,6 +258,7 @@ void goToLevel(int levelNumber) {
     level = createGameLevel(levelNumber);
   } else if (level.number == 9 && level.success == true) {
     image(img_win, 0, 0);
+    tint(255);
   } else {
     goToStateDone();
   }
@@ -306,6 +307,7 @@ void drawIntroScreen() {
   endShape();
   if (introSuccess == true) {
     image(img_great, 0, 0);  // DON'T FORGET TO UPDATE THIS IMAGE!
+    tint(255);
   }
   if (introSuccess == true && (frameCount - introSuccessFrame) >= introEnd) {
     goToStateGame();
@@ -364,6 +366,7 @@ void drawGameScreen() {
   endShape();
   if (level.success == true) {
     image(img_great, 0, 0);  // DON'T FORGET TO CHANGE THIS TO THE ORIGININAL SHAPE
+    tint(255);
   }
   if (level.success == true && (frameCount - level.successFrame) >= levelEnd) {
     goToLevel(level.number+1);  // go to NEXT level (+1)
