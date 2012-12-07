@@ -151,7 +151,7 @@ GameLevel createGameLevel(int levelNum) {
     newLevel.curve.addPoint(180,260);
     newLevel.curve.endLines();
     newLevel.scoreMin = scoreMin;
-  } else if (levelNum == 6) {         // Level Seven : Seven Sides (connected..arrow)
+  } else if (levelNum == 6) {         // Level Seven : Seven Sides (connected)
     newLevel.curve.beginLines(3.0);
     newLevel.curve.addPoint(178,350);
     newLevel.curve.addPoint(94,230);
@@ -174,6 +174,35 @@ GameLevel createGameLevel(int levelNum) {
     newLevel.curve.addPoint(186,84);
     newLevel.curve.addPoint(316,164);
     newLevel.curve.addPoint(244,190);
+    newLevel.curve.endLines();
+    newLevel.scoreMin = scoreMin;
+  } else if (levelNum == 8) {         // Level Nine : Nine Sides (connected)
+    newLevel.curve.beginLines(3.0);
+    newLevel.curve.addPoint(340,360);
+    newLevel.curve.addPoint(230,200);
+    newLevel.curve.addPoint(340,90);
+    newLevel.curve.addPoint(160,160);
+    newLevel.curve.addPoint(110,80);
+    newLevel.curve.addPoint(100,200);
+    newLevel.curve.addPoint(150,240);
+    newLevel.curve.addPoint(120,360);
+    newLevel.curve.addPoint(240,320);
+    newLevel.curve.addPoint(340,360);
+    newLevel.curve.endLines();
+    newLevel.scoreMin = scoreMin;
+  } else if (levelNum == 9) {         // Level Ten : Ten Sides (connected..star)
+    newLevel.curve.beginLines(3.0);
+    newLevel.curve.addPoint(170,190);
+    newLevel.curve.addPoint(70,160);
+    newLevel.curve.addPoint(140,250);
+    newLevel.curve.addPoint(110,370);
+    newLevel.curve.addPoint(200,320);
+    newLevel.curve.addPoint(320,340);
+    newLevel.curve.addPoint(260,250);
+    newLevel.curve.addPoint(330,220);
+    newLevel.curve.addPoint(230,180);
+    newLevel.curve.addPoint(170,90);
+    newLevel.curve.addPoint(170,190);
     newLevel.curve.endLines();
     newLevel.scoreMin = scoreMin;
   }
@@ -227,7 +256,7 @@ void goToStateGame() {
 }
 
 void goToLevel(int levelNumber) {
-  if (levelNumber < 7) {                        ////////////////// This is the total number of levels!
+  if (levelNumber < 10) {                        ////////////////// This is the total number of levels!
     level = createGameLevel(levelNumber);
   } else {
     goToStateDone();
