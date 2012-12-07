@@ -239,7 +239,7 @@ void draw() {
   }
 }
 
-
+/***** This is the land of control. we shall not draw anything in this sacred ground *****/
 
 void goToStateIntro() {
   currentState = STATE_INTRO;
@@ -283,6 +283,8 @@ void goToStateDone() {
   println("We're now deciding to play again or leave.");
 }
 
+
+/***** Nowe we can draw things *****/
 
 
 void drawSplashScreen() {
