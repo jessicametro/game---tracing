@@ -47,8 +47,6 @@ int introEnd = 120;
 
 /* GAME */
 GameLevel level;
-
-
 class GameLevel {
   int number;
   String name="";
@@ -61,9 +59,8 @@ class GameLevel {
   float scoreMin;
   float scoreUser;
 }
-
 int levelEnd = 120;
-
+PImage img_win;
 
 
 /* DONE */
@@ -77,6 +74,7 @@ void setup() {
   smooth();
   img_splash = loadImage("splash.png");
   img_great = loadImage("great.png");
+  img_win = loadImage("win.png");
   roboto = loadFont("Roboto-LightItalic-20.vlw");
   introCurve = new RCurve();
   introCurve.createPoints(3.0, 40, 90, 40, 90, 360, 340, 360, 340);
@@ -363,10 +361,13 @@ void drawGameScreen() {
     }
   endShape();
   if (level.success == true) {
-    image(img_great, 0, 0);  // DON'T FORGET TO UPDATE THIS IMAGE!
+    image(img_great, 0, 0);  // DON'T FORGET TO CHANGE THIS TO THE ORIGININAL SHAPE
   }
   if (level.success == true && (frameCount - level.successFrame) >= levelEnd) {
     goToLevel(level.number+1);  // go to NEXT level (+1)
+  }
+  if (level.number == 9 && level.success == true) {
+    image(img_win, 0, 0);
   }
 }
 
@@ -377,6 +378,7 @@ void drawStatusDots() {
   if (level.number == 0) {
     strokeWeight(1);
     stroke(statusActive);
+    fill(statusDefault);
   } else if (level.number > 0) {
     noStroke();
     fill(statusComplete);
@@ -389,6 +391,7 @@ void drawStatusDots() {
   if (level.number == 1) {
     strokeWeight(1);
     stroke(statusActive);
+    fill(statusDefault);
   } else if (level.number > 1) {
     noStroke();
     fill(statusComplete);
@@ -401,6 +404,7 @@ void drawStatusDots() {
   if (level.number == 2) {
     strokeWeight(1);
     stroke(statusActive);
+    fill(statusDefault);
   } else if (level.number > 2) {
     noStroke();
     fill(statusComplete);
@@ -413,6 +417,7 @@ void drawStatusDots() {
   if (level.number == 3) {
     strokeWeight(1);
     stroke(statusActive);
+    fill(statusDefault);
   } else if (level.number > 3) {
     noStroke();
     fill(statusComplete);
@@ -425,6 +430,7 @@ void drawStatusDots() {
   if (level.number == 4) {
     strokeWeight(1);
     stroke(statusActive);
+    fill(statusDefault);
   } else if (level.number > 4) {
     noStroke();
     fill(statusComplete);
@@ -437,6 +443,7 @@ void drawStatusDots() {
   if (level.number == 5) {
     strokeWeight(1);
     stroke(statusActive);
+    fill(statusDefault);
   } else if (level.number > 5) {
     noStroke();
     fill(statusComplete);
@@ -449,6 +456,7 @@ void drawStatusDots() {
   if (level.number == 6) {
     strokeWeight(1);
     stroke(statusActive);
+    fill(statusDefault);
   } else if (level.number > 6) {
     noStroke();
     fill(statusComplete);
@@ -461,6 +469,7 @@ void drawStatusDots() {
   if (level.number == 7) {
     strokeWeight(1);
     stroke(statusActive);
+    fill(statusDefault);
   } else if (level.number > 7) {
     noStroke();
     fill(statusComplete);
@@ -473,6 +482,7 @@ void drawStatusDots() {
   if (level.number == 8) {
     strokeWeight(1);
     stroke(statusActive);
+    fill(statusDefault);
   } else if (level.number > 8) {
     noStroke();
     fill(statusComplete);
@@ -485,6 +495,7 @@ void drawStatusDots() {
   if (level.number == 9) {
     strokeWeight(1);
     stroke(statusActive);
+    fill(statusDefault);
   } else if (level.number > 9) {
     noStroke();
     fill(statusComplete);
