@@ -256,6 +256,8 @@ void goToStateGame() {
 void goToLevel(int levelNumber) {
   if (levelNumber < 10) {                        ////////////////// This is the total number of levels!
     level = createGameLevel(levelNumber);
+  } else if (level.number == 9 && level.success == true) {
+    image(img_win, 0, 0);
   } else {
     goToStateDone();
   }
@@ -366,9 +368,9 @@ void drawGameScreen() {
   if (level.success == true && (frameCount - level.successFrame) >= levelEnd) {
     goToLevel(level.number+1);  // go to NEXT level (+1)
   }
-  if (level.number == 9 && level.success == true) {
-    image(img_win, 0, 0);
-  }
+//  if (level.number == 9 && level.success == true) {
+//    image(img_win, 0, 0);
+//  }
 }
 
 
