@@ -373,16 +373,129 @@ void drawGameScreen() {
 
 
 void drawStatusDots() {
-  noStroke();
-  fill(shapeDefault);
+
+  if (level.number == 0) {
+    strokeWeight(1);
+    stroke(statusActive);
+  } else if (level.number > 0) {
+    noStroke();
+    fill(statusComplete);
+  } else {
+    noStroke();
+    fill(statusDefault);
+  }
   ellipse(51, 40, 20, 20);
+  
+  if (level.number == 1) {
+    strokeWeight(1);
+    stroke(statusActive);
+  } else if (level.number > 1) {
+    noStroke();
+    fill(statusComplete);
+  } else {
+    noStroke();
+    fill(statusDefault);
+  }
   ellipse(84, 40, 20, 20);
+  
+  if (level.number == 2) {
+    strokeWeight(1);
+    stroke(statusActive);
+  } else if (level.number > 2) {
+    noStroke();
+    fill(statusComplete);
+  } else {
+    noStroke();
+    fill(statusDefault);
+  }
   ellipse(117, 40, 20, 20);
+  
+  if (level.number == 3) {
+    strokeWeight(1);
+    stroke(statusActive);
+  } else if (level.number > 3) {
+    noStroke();
+    fill(statusComplete);
+  } else {
+    noStroke();
+    fill(statusDefault);
+  }
   ellipse(150, 40, 20, 20);
+  
+  if (level.number == 4) {
+    strokeWeight(1);
+    stroke(statusActive);
+  } else if (level.number > 4) {
+    noStroke();
+    fill(statusComplete);
+  } else {
+    noStroke();
+    fill(statusDefault);
+  }
   ellipse(183, 40, 20, 20);
+  
+  if (level.number == 5) {
+    strokeWeight(1);
+    stroke(statusActive);
+  } else if (level.number > 5) {
+    noStroke();
+    fill(statusComplete);
+  } else {
+    noStroke();
+    fill(statusDefault);
+  }
   ellipse(216, 40, 20, 20);
+  
+  if (level.number == 6) {
+    strokeWeight(1);
+    stroke(statusActive);
+  } else if (level.number > 6) {
+    noStroke();
+    fill(statusComplete);
+  } else {
+    noStroke();
+    fill(statusDefault);
+  }
   ellipse(249, 40, 20, 20);
+  
+  if (level.number == 7) {
+    strokeWeight(1);
+    stroke(statusActive);
+  } else if (level.number > 7) {
+    noStroke();
+    fill(statusComplete);
+  } else {
+    noStroke();
+    fill(statusDefault);
+  }
   ellipse(282, 40, 20, 20);
+  
+  if (level.number == 8) {
+    strokeWeight(1);
+    stroke(statusActive);
+  } else if (level.number > 8) {
+    noStroke();
+    fill(statusComplete);
+  } else {
+    noStroke();
+    fill(statusDefault);
+  }
   ellipse(315, 40, 20, 20);
+  
+  if (level.number == 9) {
+    strokeWeight(1);
+    stroke(statusActive);
+  } else if (level.number > 9) {
+    noStroke();
+    fill(statusComplete);
+  } else {
+    noStroke();
+    fill(statusDefault);
+  }
   ellipse(348, 40, 20, 20);
+//  for (int i=0; i < maxlevels; i++) {
+//    if (i == level.number) {
+//      
+//    }
+//  }
 }
