@@ -107,6 +107,7 @@ void goToLevel(int levelNumber) {
 void goToStateDone() {
   currentState = STATE_DONE;
   println("We're now deciding to play again or leave.");
+  doneStartFrame = frameCount;
 }
 
 /*********************************** Nowe we can draw things ***********************************/
