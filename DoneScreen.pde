@@ -37,7 +37,18 @@ void drawDoneScreen() {
     tint(255, (relativeFrameCount - winAllFadedOut) * againFadeInSpeed);
     image(img_playagain, 0, 0);  
   } else if (relativeFrameCount >= againAllFadedIn) {
-    
+    tint(255);
+    image(img_playagain, 0, 0);  
+    fill(#DDDDDD);
+    rect(40, 300, 150, 60);
+    fill(#AAAAAA);
+    textFont(roboto);
+    text("yes", 115, 336);
+    fill(#DDDDDD); 
+    rect(210, 300, 150, 60);
+    fill(#AAAAAA);
+    textFont(roboto);
+    text("no", 285, 336);
   }
 }
  

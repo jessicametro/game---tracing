@@ -8,6 +8,7 @@ color statusDefault = #DDDDDD;
 color statusActive = #BBBBBB; 
 color statusComplete = #008888;
 
+PFont roboto_italic;
 PFont roboto;
 
 int pathStrokeWeight = 24;
@@ -40,7 +41,8 @@ void setup() {
   img_great = loadImage("great.png");
   img_win = loadImage("win.png");
   img_playagain = loadImage("playagain.png");
-  roboto = loadFont("Roboto-LightItalic-20.vlw");
+  roboto_italic = loadFont("Roboto-LightItalic-20.vlw");
+  roboto = loadFont("Roboto-Light-24.vlw");
   introCurve = new RCurve();
   introCurve.createPoints(3.0, 40, 90, 40, 90, 360, 340, 360, 340);
   introDOR.addGesture("intro", introCurve.points);  // gesture recognition, passes points from RCurve 
@@ -148,5 +150,28 @@ void mouseReleased() {
     level.userPath.clear();
   }
 }
+
+void mouseClicked() {
+  if (currentState == STATE_DONE) {
+    println("the user has clicked on the done screen");
+    if (mouseX >= 40 && mouseX <= 180 && mouseY >= 300 && mouseY <= 360) {
+      println("return to game");
+      goToStateGame(); 
+    }
+    if (mouseX >= 210 && mouseX <= 360 && mouseY >= 300 && mouseY <= 360) {
+      println("goodbye");
+      exit();
+    }
+  }
+  
+}
+
+
+
+
+
+
+
+
 
 
