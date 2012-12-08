@@ -18,8 +18,6 @@ class GameLevel {
 
 int levelEnd = 120;
 
-PImage img_win;
-
 
 /*
 void setupLevel(GameLevel level, RCurve myCurve) {
@@ -165,6 +163,7 @@ void drawGameScreen() {
     }
   endShape();
   if (level.success == true) {
+    /** DO THE OVERLAY HERE **/
     image(img_great, 0, 0);  // DON'T FORGET TO CHANGE THIS TO THE ORIGININAL SHAPE
     tint(255);
   }
@@ -180,11 +179,11 @@ void drawGameScreen() {
 
 void drawStatusDots() {
 
-  if (level.number == 0) {
+  if (level.number == 0 && level.success == false) {
     strokeWeight(1);
     stroke(statusActive);
     fill(statusDefault);
-  } else if (level.number > 0) {
+  } else if (level.number >= 0) {
     noStroke();
     fill(statusComplete);
   } else {
@@ -193,11 +192,11 @@ void drawStatusDots() {
   }
   ellipse(51, 40, 20, 20);
   
-  if (level.number == 1) {
+  if (level.number == 1 && level.success == false) {
     strokeWeight(1);
     stroke(statusActive);
     fill(statusDefault);
-  } else if (level.number > 1) {
+  } else if (level.number >= 1) {
     noStroke();
     fill(statusComplete);
   } else {
@@ -206,11 +205,11 @@ void drawStatusDots() {
   }
   ellipse(84, 40, 20, 20);
   
-  if (level.number == 2) {
+  if (level.number == 2 && level.success == false) {
     strokeWeight(1);
     stroke(statusActive);
     fill(statusDefault);
-  } else if (level.number > 2) {
+  } else if (level.number >= 2) {
     noStroke();
     fill(statusComplete);
   } else {
@@ -219,11 +218,11 @@ void drawStatusDots() {
   }
   ellipse(117, 40, 20, 20);
   
-  if (level.number == 3) {
+  if (level.number == 3 && level.success == false) {
     strokeWeight(1);
     stroke(statusActive);
     fill(statusDefault);
-  } else if (level.number > 3) {
+  } else if (level.number >= 3) {
     noStroke();
     fill(statusComplete);
   } else {
@@ -232,11 +231,11 @@ void drawStatusDots() {
   }
   ellipse(150, 40, 20, 20);
   
-  if (level.number == 4) {
+  if (level.number == 4 && level.success == false) {
     strokeWeight(1);
     stroke(statusActive);
     fill(statusDefault);
-  } else if (level.number > 4) {
+  } else if (level.number >= 4) {
     noStroke();
     fill(statusComplete);
   } else {
@@ -245,11 +244,11 @@ void drawStatusDots() {
   }
   ellipse(183, 40, 20, 20);
   
-  if (level.number == 5) {
+  if (level.number == 5 && level.success == false) {
     strokeWeight(1);
     stroke(statusActive);
     fill(statusDefault);
-  } else if (level.number > 5) {
+  } else if (level.number >= 5) {
     noStroke();
     fill(statusComplete);
   } else {
@@ -258,11 +257,11 @@ void drawStatusDots() {
   }
   ellipse(216, 40, 20, 20);
   
-  if (level.number == 6) {
+  if (level.number == 6 && level.success == false) {
     strokeWeight(1);
     stroke(statusActive);
     fill(statusDefault);
-  } else if (level.number > 6) {
+  } else if (level.number >= 6) {
     noStroke();
     fill(statusComplete);
   } else {
@@ -271,11 +270,11 @@ void drawStatusDots() {
   }
   ellipse(249, 40, 20, 20);
   
-  if (level.number == 7) {
+  if (level.number == 7 && level.success == false) {
     strokeWeight(1);
     stroke(statusActive);
     fill(statusDefault);
-  } else if (level.number > 7) {
+  } else if (level.number >= 7) {
     noStroke();
     fill(statusComplete);
   } else {
@@ -284,11 +283,11 @@ void drawStatusDots() {
   }
   ellipse(282, 40, 20, 20);
   
-  if (level.number == 8) {
+  if (level.number == 8 && level.success == false) {
     strokeWeight(1);
     stroke(statusActive);
     fill(statusDefault);
-  } else if (level.number > 8) {
+  } else if (level.number >= 8) {
     noStroke();
     fill(statusComplete);
   } else {
@@ -297,11 +296,11 @@ void drawStatusDots() {
   }
   ellipse(315, 40, 20, 20);
   
-  if (level.number == 9) {
+  if (level.number == 9 && level.success == false) {
     strokeWeight(1);
     stroke(statusActive);
     fill(statusDefault);
-  } else if (level.number > 9) {
+  } else if (level.number >= 9) {
     noStroke();
     fill(statusComplete);
   } else {

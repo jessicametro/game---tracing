@@ -81,23 +81,24 @@ void goToStateGame() {
 void goToLevel(int levelNumber) {
   if (levelNumber < 10) {          // This is the total number of levels!
     level = createGameLevel(levelNumber);
-  } else if (level.number == 9 && level.success == true) {
-    background(bkgd);
-    image(img_win, 0, 0);
-    tint(255);
-    noStroke();
-    fill(statusComplete);
-    ellipse(51, 40, 20, 20);
-    ellipse(84, 40, 20, 20);
-    ellipse(117, 40, 20, 20);
-    ellipse(150, 40, 20, 20);
-    ellipse(183, 40, 20, 20);
-    ellipse(216, 40, 20, 20);
-    ellipse(249, 40, 20, 20);
-    ellipse(282, 40, 20, 20);
-    ellipse(315, 40, 20, 20);
-    ellipse(348, 40, 20, 20);
-  } else {
+  } //else if (level.number == 9 && level.success == true) {
+//    background(bkgd);
+//    image(img_win, 0, 0);
+//    tint(255);
+//    noStroke();
+//    fill(statusComplete);
+//    ellipse(51, 40, 20, 20);
+//    ellipse(84, 40, 20, 20);
+//    ellipse(117, 40, 20, 20);
+//    ellipse(150, 40, 20, 20);
+//    ellipse(183, 40, 20, 20);
+//    ellipse(216, 40, 20, 20);
+//    ellipse(249, 40, 20, 20);
+//    ellipse(282, 40, 20, 20);
+//    ellipse(315, 40, 20, 20);
+//    ellipse(348, 40, 20, 20);
+//  } 
+  else {
     goToStateDone();
   }
   level.startFrame = frameCount;
