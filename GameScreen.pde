@@ -148,7 +148,7 @@ GameLevel createGameLevel(int levelNum) {
 
 
 void drawGameScreen() {
-  drawStatusDots();
+  drawStatusDots(255);
   if (frameCount - level.startFrame < 150) {
     float startPathGame = ((frameCount - level.startFrame))/100.0;
     level.curve.drawCurve(startPathGame, 0.4, shapeDefault, pathStrokeWeight);
@@ -177,135 +177,135 @@ void drawGameScreen() {
 
 
 
-void drawStatusDots() {
-
+void drawStatusDots(float opacity) {
+  
   if (level.number == 0 && level.success == false) {
     strokeWeight(1);
-    stroke(statusActive);
-    fill(statusDefault);
+    stroke(statusActive, opacity);
+    fill(statusDefault, opacity);
   } else if (level.number >= 0) {
     noStroke();
-    fill(statusComplete);
+    fill(statusComplete, opacity);
   } else {
     noStroke();
-    fill(statusDefault);
+    fill(statusDefault, opacity);
   }
   ellipse(51, 40, 20, 20);
   
   if (level.number == 1 && level.success == false) {
     strokeWeight(1);
-    stroke(statusActive);
-    fill(statusDefault);
+    stroke(statusActive, opacity);
+    fill(statusDefault, opacity);
   } else if (level.number >= 1) {
     noStroke();
-    fill(statusComplete);
+    fill(statusComplete, opacity);
   } else {
     noStroke();
-    fill(statusDefault);
+    fill(statusDefault, opacity);
   }
   ellipse(84, 40, 20, 20);
   
   if (level.number == 2 && level.success == false) {
     strokeWeight(1);
-    stroke(statusActive);
-    fill(statusDefault);
+    stroke(statusActive, opacity);
+    fill(statusDefault, opacity);
   } else if (level.number >= 2) {
     noStroke();
-    fill(statusComplete);
+    fill(statusComplete, opacity);
   } else {
     noStroke();
-    fill(statusDefault);
+    fill(statusDefault, opacity);
   }
   ellipse(117, 40, 20, 20);
   
   if (level.number == 3 && level.success == false) {
     strokeWeight(1);
-    stroke(statusActive);
-    fill(statusDefault);
+    stroke(statusActive, opacity);
+    fill(statusDefault, opacity);
   } else if (level.number >= 3) {
     noStroke();
-    fill(statusComplete);
+    fill(statusComplete, opacity);
   } else {
     noStroke();
-    fill(statusDefault);
+    fill(statusDefault, opacity);
   }
   ellipse(150, 40, 20, 20);
   
   if (level.number == 4 && level.success == false) {
     strokeWeight(1);
-    stroke(statusActive);
-    fill(statusDefault);
+    stroke(statusActive, opacity);
+    fill(statusDefault, opacity);
   } else if (level.number >= 4) {
     noStroke();
-    fill(statusComplete);
+    fill(statusComplete, opacity);
   } else {
     noStroke();
-    fill(statusDefault);
+    fill(statusDefault, opacity);
   }
   ellipse(183, 40, 20, 20);
   
   if (level.number == 5 && level.success == false) {
     strokeWeight(1);
-    stroke(statusActive);
-    fill(statusDefault);
+    stroke(statusActive, opacity);
+    fill(statusDefault, opacity);
   } else if (level.number >= 5) {
     noStroke();
-    fill(statusComplete);
+    fill(statusComplete, opacity);
   } else {
     noStroke();
-    fill(statusDefault);
+    fill(statusDefault, opacity);
   }
   ellipse(216, 40, 20, 20);
   
   if (level.number == 6 && level.success == false) {
     strokeWeight(1);
-    stroke(statusActive);
-    fill(statusDefault);
+    stroke(statusActive, opacity);
+    fill(statusDefault, opacity);
   } else if (level.number >= 6) {
     noStroke();
-    fill(statusComplete);
+    fill(statusComplete, opacity);
   } else {
     noStroke();
-    fill(statusDefault);
+    fill(statusDefault, opacity);
   }
   ellipse(249, 40, 20, 20);
   
   if (level.number == 7 && level.success == false) {
     strokeWeight(1);
-    stroke(statusActive);
-    fill(statusDefault);
+    stroke(statusActive, opacity);
+    fill(statusDefault, opacity);
   } else if (level.number >= 7) {
     noStroke();
-    fill(statusComplete);
+    fill(statusComplete, opacity);
   } else {
     noStroke();
-    fill(statusDefault);
+    fill(statusDefault, opacity);
   }
   ellipse(282, 40, 20, 20);
   
   if (level.number == 8 && level.success == false) {
     strokeWeight(1);
-    stroke(statusActive);
-    fill(statusDefault);
+    stroke(statusActive, opacity);
+    fill(statusDefault, opacity);
   } else if (level.number >= 8) {
     noStroke();
-    fill(statusComplete);
+    fill(statusComplete, opacity);
   } else {
     noStroke();
-    fill(statusDefault);
+    fill(statusDefault, opacity);
   }
   ellipse(315, 40, 20, 20);
   
   if (level.number == 9 && level.success == false) {
     strokeWeight(1);
-    stroke(statusActive);
-    fill(statusDefault);
+    stroke(statusActive, opacity);
+    fill(statusDefault, opacity);
   } else if (level.number >= 9) {
     noStroke();
-    fill(statusComplete);
+    fill(statusComplete, opacity);
   } else {
     noStroke();
-    fill(statusDefault);
+    fill(statusDefault, opacity);
   }
   ellipse(348, 40, 20, 20);
 }

@@ -39,6 +39,7 @@ void setup() {
   img_splash = loadImage("splash.png");
   img_great = loadImage("great.png");
   img_win = loadImage("win.png");
+  img_playagain = loadImage("playagain.png");
   roboto = loadFont("Roboto-LightItalic-20.vlw");
   introCurve = new RCurve();
   introCurve.createPoints(3.0, 40, 90, 40, 90, 360, 340, 360, 340);
