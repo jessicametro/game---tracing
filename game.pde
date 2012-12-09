@@ -143,26 +143,30 @@ void mouseDragged() {
 
 void mouseReleased() {
   if (currentState == STATE_INTRO) {
-    Result val = introDOR.recognize(userPath, true); 
-    println("Recnogized: "+val.name+" Score:" +val.score);
-    if (val.score > scoreMin) {
-      println("Success!");
-      introSuccess = true;
-      introSuccessFrame = frameCount;
-    } else if (val.score < scoreMin) {
-      println("Failure!");
-      introFinished = true;
-      introFinishedFrame = frameCount;
-      introSuccess = false;
+    if (userPath.size() >= 2) {
+      Result val = introDOR.recognize(userPath, true); 
+      println("Recnogized: "+val.name+" Score:" +val.score);
+      if (val.score > scoreMin) {
+        println("Success!");
+        introSuccess = true;
+        introSuccessFrame = frameCount;
+      } else if (val.score < scoreMin) {
+        println("Failure!");
+        introFinished = true;
+        introFinishedFrame = frameCount;
+        introSuccess = false;
+      }
     }
     userPath.clear();
   } else if (currentState == STATE_GAME) {
-    Result val = level.recognizer.recognize(level.userPath, true); 
-    println("Recnogized: "+val.name+" Score:" +val.score);
-    if (val.score > level.scoreMin) {
-      println("Success!");
-      level.success = true;
-      level.scoreUser = val.score;
+    if (level.userPath.size() >= 2) {
+      Result val = level.recognizer.recognize(level.userPath, true); 
+      println("Recnogized: "+val.name+" Score:" +val.score);
+      if (val.score > level.scoreMin) {
+        println("Success!");
+        level.success = true;
+        level.scoreUser = val.score;
+      }
     }
     level.finishedFrame = frameCount;
     level.finished = true;
