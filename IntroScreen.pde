@@ -2,10 +2,15 @@
 
 
 PImage img_great;
+PImage img_tryagain;
 RCurve introCurve;
 int introFrameCount;
+
 DollarRecognizer introDOR = new DollarRecognizer();  // gesture recognition
 ArrayList<Point> userPath = new ArrayList<Point>();  // this is the container for points the user inputs
+
+boolean introFinished;
+int introFinishedFrame;
 boolean introSuccess = false;
 int introSuccessFrame;
 int introEnd = 120;
@@ -29,9 +34,16 @@ void drawIntroScreen() {
       vertex(userPath.get(i).X, userPath.get(i).Y);  // array = userPath[i].x but this uses X also an array list = userPath.get(i).X
     }
   endShape();
-  if (introSuccess == true) {
-    image(img_great, 0, 0);  // DON'T FORGET TO UPDATE THIS IMAGE!
+  if (introFinished == true && introSuccess == false) {
     tint(255);
+    image(img_tryagain, 0, 0);
+  }
+  if (introFinished == true && introSuccess == false && (frameCount - introFinishedFrame) >= introEnd) {
+    restartIntro();
+  }
+  if (introSuccess == true) {
+    tint(255);
+    image(img_great, 0, 0);
   }
   if (introSuccess == true && (frameCount - introSuccessFrame) >= introEnd) {
     goToStateGame();

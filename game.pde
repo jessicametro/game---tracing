@@ -38,6 +38,7 @@ void setup() {
   frameRate(60);
   smooth();
   img_splash = loadImage("splash.png");
+  img_tryagain = loadImage("tryagain.png");
   img_great = loadImage("great.png");
   img_win = loadImage("win.png");
   img_playagain = loadImage("playagain.png");
@@ -73,6 +74,11 @@ void goToStateIntro() {
   currentState = STATE_INTRO;
   println("We're now introducing the game.");
   introFrameCount = frameCount;
+}
+
+void restartIntro() {
+  introFrameCount = frameCount;
+  introFinished = false;
 }
 
 void goToStateGame() {
@@ -143,6 +149,11 @@ void mouseReleased() {
       println("Success!");
       introSuccess = true;
       introSuccessFrame = frameCount;
+    } else if (val.score < scoreMin) {
+      println("Failure!");
+      introFinished = true;
+      introFinishedFrame = frameCount;
+      introSuccess = false;
     }
     userPath.clear();
   } else if (currentState == STATE_GAME) {
