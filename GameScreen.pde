@@ -37,24 +37,26 @@ GameLevel createGameLevel(int levelNum) {
   newLevel.curve = new RCurve();
 
   if (levelNum == 0) {                 // Level One : Circle
-    newLevel.curve.createPoints(3.0, new float[][] { {130,170,170,130,270, 90,310,130},
-                                                     {310,130,350,170,310,230,270,270},
-                                                     {270,270,230,310,130,350, 90,310},
-                                                     { 90,310, 50,270, 90,210,130,170} });
-    newLevel.scoreMin = 12;  // specific number because it's easier : 20 is hard, 10 is easy
-  } else if (levelNum == 1) {         // Level Two : Two Sides (open)
-    newLevel.curve.beginLines(3.0);
-    newLevel.curve.addPoint(120,110);
-    newLevel.curve.addPoint(320,310);
-    newLevel.curve.addPoint(80,270);
-    newLevel.curve.endLines();
-    newLevel.scoreMin = 10;
-  } else if (levelNum == 2) {         // Level Three : Three Sides (connected)
-    newLevel.curve.beginLines(3.0);
-    newLevel.curve.addPoint(290,120);
-    newLevel.curve.addPoint(90,140);
-    newLevel.curve.addPoint(140,340);
-    newLevel.curve.addPoint(290,120);
+//    newLevel.curve.createPoints(3.0, new float[][] { {130,170,170,130,270, 90,310,130},
+//                                                     {310,130,350,170,310,230,270,270},
+//                                                     {270,270,230,310,130,350, 90,310},
+//                                                     { 90,310, 50,270, 90,210,130,170} });
+//    newLevel.scoreMin = 12;  // specific number because it's easier : 20 is hard, 10 is easy
+//  } else if (levelNum == 1) {         // Level Two : Two Sides (open)
+//    newLevel.curve.beginLines(3.0);
+//    newLevel.curve.addPoint(120,110);
+//    newLevel.curve.addPoint(320,310);
+//    newLevel.curve.addPoint(80,270);
+//    newLevel.curve.endLines();
+//    randomPoints(newLevel, 3, 200);
+//    newLevel.scoreMin = 10;
+//  } else if (levelNum == 2) {         // Level Three : Three Sides (connected)
+//    newLevel.curve.beginLines(3.0);
+//    newLevel.curve.addPoint(290,120);
+//    newLevel.curve.addPoint(90,140);
+//    newLevel.curve.addPoint(140,340);
+//    newLevel.curve.addPoint(290,120);
+    randomPoints(newLevel, 3, 150, true);
     newLevel.curve.endLines();
     newLevel.scoreMin = 12;
   } else if (levelNum == 3) {         // Level Four : Four Sides (connected)
@@ -146,7 +148,32 @@ GameLevel createGameLevel(int levelNum) {
   return newLevel;
 }
 
-
+void randomPoints(GameLevel level, int numPoints, int minDistance, boolean doesConnect) {
+  float firstX = 0;  // stores the first generated point to connect back at the end
+  float firstY = 0;  // these need to be equal to zero otherwise it breaks
+  float lastX = MAX_FLOAT;  // MAX_FLOAT = largest number a float can handle
+  float lastY = MAX_FLOAT;
+  level.curve.beginLines(3.0);
+  for (int i = 0; i < numPoints; i++) {
+    float x = random(40, 360);
+    float y = random(80, 360);
+    while (dist(x, y, lastX, lastY) < minDistance) {  // this is to make sure the lines are long enough .. use while (instead of if) so that it continuously runs until it finds the right point
+      x = random(40, 360);
+      y = random(80, 360);
+    }
+    if (i == 0) {
+      firstX = x;
+      firstY = y;
+    }
+    lastX = x;  // update to most recent value so it can calculate the *next* point
+    lastY = y;
+    level.curve.addPoint(x, y);
+  }
+  if (doesConnect == true) {
+    level.curve.addPoint(firstX, firstY);
+  }
+  level.curve.endLines();
+}
 
 void drawGameScreen() {
   drawStatusDots(255);
