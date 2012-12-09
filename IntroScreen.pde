@@ -36,14 +36,14 @@ void drawIntroScreen() {
   endShape();
   if (introFinished == true && introSuccess == false) {
     tint(255);
-    image(img_tryagain, 0, 0);
+    image(img_tryagain, 0, 0, 400, 400);
   }
   if (introFinished == true && introSuccess == false && (frameCount - introFinishedFrame) >= introEnd) {
     restartIntro();
   }
   if (introSuccess == true) {
     tint(255);
-    image(img_great, 0, 0);
+    image(img_great, 0, 0, 400, 400);
   }
   if (introSuccess == true && (frameCount - introSuccessFrame) >= introEnd) {
     goToStateGame();

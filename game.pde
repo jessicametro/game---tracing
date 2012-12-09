@@ -1,3 +1,5 @@
+float s = 2;
+
 color bkgd = #f2f2f2; 
 color textT = #009999;
 color textG = #aaaaaa; // same as at the end
@@ -33,15 +35,15 @@ int currentState = STATE_START;
 
 
 void setup() {
-  size(400, 400);
+  size(800, 800);
   background(bkgd);
   frameRate(60);
   smooth();
-  img_splash = loadImage("splash.png");
-  img_tryagain = loadImage("tryagain.png");
-  img_great = loadImage("great.png");
-  img_win = loadImage("win.png");
-  img_playagain = loadImage("playagain.png");
+  img_splash = loadImage("splash_x2.png");
+  img_tryagain = loadImage("tryagain_x2.png");
+  img_great = loadImage("great_x2.png");
+  img_win = loadImage("win_x2.png");
+  img_playagain = loadImage("playagain_x2.png");
   roboto_italic = loadFont("Roboto-LightItalic-20.vlw");
   roboto = loadFont("Roboto-Light-24.vlw");
   introCurve = new RCurve();
@@ -50,6 +52,7 @@ void setup() {
 }
 
 void draw() {
+  scale(s, s);
   background(bkgd);
   if (currentState == STATE_START) {
     drawSplashScreen();
@@ -133,11 +136,19 @@ void goToStateDone() {
 
 /* user's input */
 
+float actualMouseX() {  // this is for the scale
+  return mouseX/s;
+}
+
+float actualMouseY() {  // this is for the scale
+  return mouseY/s;
+}
+
 void mouseDragged() { 
   if (currentState == STATE_INTRO) {
-    userPath.add(new Point(mouseX, mouseY));
+    userPath.add(new Point(actualMouseX(), actualMouseY()));
   } else if (currentState == STATE_GAME) {
-   level.userPath.add(new Point(mouseX, mouseY));
+   level.userPath.add(new Point(actualMouseX(), actualMouseY()));
   }
 }
 
@@ -176,11 +187,11 @@ void mouseReleased() {
 void mouseClicked() {
   if (currentState == STATE_DONE) {
     println("the user has clicked on the done screen");
-    if (mouseX >= 40 && mouseX <= 180 && mouseY >= 300 && mouseY <= 360) {
+    if (actualMouseX() >= 40 && actualMouseX() <= 180 && actualMouseY() >= 300 && actualMouseY() <= 360) {
       println("return to game");
       goToStateGame(); 
     }
-    if (mouseX >= 210 && mouseX <= 360 && mouseY >= 300 && mouseY <= 360) {
+    if (actualMouseX() >= 210 && actualMouseX() <= 360 && actualMouseY() >= 300 && actualMouseY() <= 360) {
       println("goodbye");
       exit();
     }
