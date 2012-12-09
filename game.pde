@@ -107,6 +107,13 @@ void goToLevel(int levelNumber) {
   level.startFrame = frameCount;
 }
 
+void restartLevel() {
+  level.userPath.clear();
+  level.startFrame = frameCount;
+  level.success = false;
+  level.finished = false;
+}
+
 void goToStateDone() {
   currentState = STATE_DONE;
   println("We're now deciding to play again or leave.");
@@ -144,10 +151,10 @@ void mouseReleased() {
     if (val.score > level.scoreMin) {
       println("Success!");
       level.success = true;
-      level.successFrame = frameCount;
       level.scoreUser = val.score;
     }
-    level.userPath.clear();
+    level.finishedFrame = frameCount;
+    level.finished = true;
   }
 }
 

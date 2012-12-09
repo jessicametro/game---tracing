@@ -10,6 +10,8 @@ class GameLevel {
   RCurve curve;
   DollarRecognizer recognizer = new DollarRecognizer();  // gesture recognition
   ArrayList<Point> userPath = new ArrayList<Point>();  // this is the container for points the user inputs
+  boolean finished;
+  int finishedFrame;
   boolean success;
   int successFrame;
   float scoreMin;
@@ -162,13 +164,14 @@ void drawGameScreen() {
       vertex(level.userPath.get(i).X, level.userPath.get(i).Y);  // array = userPath[i].x but this uses X also an array list = userPath.get(i).X
     }
   endShape();
-  if (level.success == true) {
-    /** DO THE OVERLAY HERE **/
-    image(img_great, 0, 0);  // DON'T FORGET TO CHANGE THIS TO THE ORIGININAL SHAPE
-    tint(255);
+  if (level.finished == true) {
+    level.curve.drawCurve(1, 2, shapeDefault, pathStrokeWeight);
   }
-  if (level.success == true && (frameCount - level.successFrame) >= levelEnd) {
+  if (level.finished == true && level.success == true && (frameCount - level.finishedFrame) >= levelEnd) {
     goToLevel(level.number+1);  // go to NEXT level (+1)
+  }
+  if (level.finished == true && level.success == false && (frameCount - level.finishedFrame) >= levelEnd) {
+    restartLevel();  // restart level
   }
 //  if (level.number == 9 && level.success == true) {
 //    image(img_win, 0, 0);
