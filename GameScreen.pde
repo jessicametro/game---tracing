@@ -37,11 +37,10 @@ GameLevel createGameLevel(int levelNum) {
   newLevel.curve = new RCurve();
 
   if (levelNum == 0) {                 // Level One : Circle
-    newLevel.curve.beginLines(3.0);
-    newLevel.curve.addPoint(40,90);
-    newLevel.curve.addPoint(90,90);
-    newLevel.curve.addPoint(340,360);
-    newLevel.curve.endLines();
+    newLevel.curve.createPoints(3.0, new float[][] { {130,170,170,130,270, 90,310,130},
+                                                     {310,130,350,170,310,330,270,270},
+                                                     {270,270,230,310,130,350, 90,310},
+                                                     { 90,310, 50,270, 90,210,130,170} });
     newLevel.scoreMin = scoreMin;
   } else if (levelNum == 1) {         // Level Two : Two Sides (open)
     newLevel.curve.beginLines(3.0);
