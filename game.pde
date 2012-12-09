@@ -1,5 +1,3 @@
-float s = 2;
-
 color bkgd = #f2f2f2; 
 color textT = #009999;
 color textG = #aaaaaa; // same as at the end
@@ -17,10 +15,9 @@ int pathStrokeWeight = 24;
 
 float scoreMin = 1.1;
 
-// circles = 20 x 20
-// 10px of space between each circle
-
-
+float s;
+float left;
+float top;
 
 
 /* STATES */
@@ -32,10 +29,8 @@ int STATE_DONE = 3;
 int currentState = STATE_START;
 
 
-
-
 void setup() {
-  size(800, 800);
+  size(displayWidth, displayHeight);
   background(bkgd);
   frameRate(60);
   smooth();
@@ -52,6 +47,8 @@ void setup() {
 }
 
 void draw() {
+  calculateScale();
+  translate(left, top);
   scale(s, s);
   background(bkgd);
   if (currentState == STATE_START) {
@@ -68,6 +65,12 @@ void draw() {
   }
 }
 
+void calculateScale() {
+  float smallestSide = min(width, height);
+  s = smallestSide/400;
+  left = (width-smallestSide)/2;
+  top = (height-smallestSide)/2;
+}
 
 
 
@@ -93,24 +96,7 @@ void goToStateGame() {
 void goToLevel(int levelNumber) {
   if (levelNumber < 10) {          // This is the total number of levels!
     level = createGameLevel(levelNumber);
-  } //else if (level.number == 9 && level.success == true) {
-//    background(bkgd);
-//    image(img_win, 0, 0);
-//    tint(255);
-//    noStroke();
-//    fill(statusComplete);
-//    ellipse(51, 40, 20, 20);
-//    ellipse(84, 40, 20, 20);
-//    ellipse(117, 40, 20, 20);
-//    ellipse(150, 40, 20, 20);
-//    ellipse(183, 40, 20, 20);
-//    ellipse(216, 40, 20, 20);
-//    ellipse(249, 40, 20, 20);
-//    ellipse(282, 40, 20, 20);
-//    ellipse(315, 40, 20, 20);
-//    ellipse(348, 40, 20, 20);
-//  } 
-  else {
+  } else {
     goToStateDone();
   }
   level.startFrame = frameCount;
@@ -137,11 +123,11 @@ void goToStateDone() {
 /* user's input */
 
 float actualMouseX() {  // this is for the scale
-  return mouseX/s;
+  return (mouseX-left)/s ;
 }
 
 float actualMouseY() {  // this is for the scale
-  return mouseY/s;
+  return (mouseY-top)/s;
 }
 
 void mouseDragged() { 
@@ -198,13 +184,5 @@ void mouseClicked() {
   }
   
 }
-
-
-
-
-
-
-
-
 
 
