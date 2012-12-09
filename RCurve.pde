@@ -69,7 +69,7 @@ class RCurve {
           //x = bezierPoint(60,600,60,600,lastbest);
           //y = bezierPoint(60,60,600,600,lastbest);
           x = bezierPoint(x1,x2,x3,x4,lastbest);
-          y = bezierPoint(y1,y1,y3,y4,lastbest);
+          y = bezierPoint(y1,y2,y3,y4,lastbest);
         }
         lastx = x;
         lasty = y;
