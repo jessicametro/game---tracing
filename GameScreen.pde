@@ -56,17 +56,18 @@ GameLevel createGameLevel(int levelNum) {
 //    newLevel.curve.addPoint(90,140);
 //    newLevel.curve.addPoint(140,340);
 //    newLevel.curve.addPoint(290,120);
-    randomPoints(newLevel, 3, 150, true);
-    newLevel.curve.endLines();
-    newLevel.scoreMin = 12;
-  } else if (levelNum == 3) {         // Level Four : Four Sides (connected)
-    newLevel.curve.beginLines(3.0);
-    newLevel.curve.addPoint(60,310);
-    newLevel.curve.addPoint(300,310);
-    newLevel.curve.addPoint(340,190);
-    newLevel.curve.addPoint(100,110);
-    newLevel.curve.addPoint(60,310);
-    newLevel.curve.endLines();
+//    randomPoints(newLevel, 3, 150, true);
+//    newLevel.curve.endLines();
+//    newLevel.scoreMin = 12;
+//  } else if (levelNum == 3) {         // Level Four : Four Sides (connected)
+//    newLevel.curve.beginLines(3.0);
+//    newLevel.curve.addPoint(60,310);
+//    newLevel.curve.addPoint(300,310);
+//    newLevel.curve.addPoint(340,190);
+//    newLevel.curve.addPoint(100,110);
+//    newLevel.curve.addPoint(60,310);
+//    newLevel.curve.endLines();
+    randomPoints(newLevel, 4, 150, true);
     newLevel.scoreMin = 12;
   } else if (levelNum == 4) {         // Level Five : Five Sides (connected)
     newLevel.curve.beginLines(3.0);
