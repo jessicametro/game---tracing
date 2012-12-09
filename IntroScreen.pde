@@ -25,15 +25,17 @@ void drawIntroScreen() {
     float startPathIntro = ((frameCount - introFrameCount))/100.0;
     introCurve.drawCurve(startPathIntro, 0.4, shapeDefault, pathStrokeWeight);
   }  
-  noFill();
-  stroke(userInput);
-  strokeWeight(pathStrokeWeight);
-  strokeJoin(ROUND);
-  beginShape();
-    for (int i = 0; i < userPath.size(); i++) {
-      vertex(userPath.get(i).X, userPath.get(i).Y);  // array = userPath[i].x but this uses X also an array list = userPath.get(i).X
-    }
-  endShape();
+  if (userPath.size() >= 1) {  // wrapping the following info in an if statement makes the user input go away on the next round on Android
+    noFill();
+    stroke(userInput);
+    strokeWeight(pathStrokeWeight);
+    strokeJoin(ROUND);
+    beginShape();
+      for (int i = 0; i < userPath.size(); i++) {
+        vertex(userPath.get(i).X, userPath.get(i).Y);  // array = userPath[i].x but this uses X also an array list = userPath.get(i).X
+      }
+    endShape();
+  }
   if (introFinished == true && introSuccess == false) {
     tint(255);
     image(img_tryagain, 0, 0, 400, 400);

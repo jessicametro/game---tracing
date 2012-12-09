@@ -154,15 +154,17 @@ void drawGameScreen() {
     float startPathGame = ((frameCount - level.startFrame))/100.0;
     level.curve.drawCurve(startPathGame, 0.4, shapeDefault, pathStrokeWeight);
   } 
-  noFill();
-  stroke(userInput);
-  strokeWeight(pathStrokeWeight);
-  strokeJoin(ROUND);
-  beginShape();
-    for (int i = 0; i < level.userPath.size(); i++) {
-      vertex(level.userPath.get(i).X, level.userPath.get(i).Y);  // array = userPath[i].x but this uses X also an array list = userPath.get(i).X
-    }
-  endShape();
+  if (level.userPath.size() >= 1) {  // wrapping the following info in an if statement makes the user input go away on the next round on Android
+    noFill();
+    stroke(userInput);
+    strokeWeight(pathStrokeWeight);
+    strokeJoin(ROUND);
+    beginShape();
+      for (int i = 0; i < level.userPath.size(); i++) {
+        vertex(level.userPath.get(i).X, level.userPath.get(i).Y);  // array = userPath[i].x but this uses X also an array list = userPath.get(i).X
+      }
+    endShape();
+  }
   if (level.finished == true) {
     level.curve.drawCurve(1, 2, shapeDefault, pathStrokeWeight);
   }
