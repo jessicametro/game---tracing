@@ -19,7 +19,7 @@ int introEnd = 2000;
 void drawIntroScreen() {
   textAlign(CENTER);
   fill(#009999);
-  textFont(roboto_italic);
+  textFont(roboto_italic, 20);
   text("trace the shape", 200, 45);  
   if (millis() - introFrameCount < 2500) {
     float startPathIntro = ((millis() - introFrameCount))/1600.0;

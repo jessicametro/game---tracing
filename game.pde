@@ -30,8 +30,9 @@ int currentState = STATE_START;
 
 
 void setup() {
-  size(600, 600);
-  //size(displayWidth, displayHeight);
+  //size(600, 600);
+  size(displayWidth, displayHeight);
+  calculateScale();
   background(bkgd);
   frameRate(60);
   smooth();
@@ -40,9 +41,9 @@ void setup() {
   img_great = loadImage("great_x2.png");
   img_win = loadImage("win_x2.png");
   img_playagain = loadImage("playagain_x2.png");
-  roboto_italic = createFont("Roboto-LightItalic", 20);
+  roboto_italic = createFont("Roboto-LightItalic", 20*s, true);
   //roboto_italic = loadFont("Roboto-LightItalic-20.vlw");
-  roboto = createFont("Roboto-Light", 24);
+  roboto = createFont("Roboto-Light", 24*s, true);
   //roboto = loadFont("Roboto-Light-24.vlw");
   introCurve = new RCurve();
   introCurve.createPoints(3.0, 40, 90, 40, 90, 360, 340, 360, 340);

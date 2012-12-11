@@ -42,12 +42,12 @@ void drawDoneScreen() {
     fill(#DDDDDD);
     rect(40, 300, 150, 60);
     fill(#AAAAAA);
-    textFont(roboto);
+    textFont(roboto, 24);
     text("yes", 115, 336);
     fill(#DDDDDD); 
     rect(210, 300, 150, 60);
     fill(#AAAAAA);
-    textFont(roboto);
+    textFont(roboto, 24);
     text("no", 285, 336);
   }
 }
