@@ -40,8 +40,10 @@ void setup() {
   img_great = loadImage("great_x2.png");
   img_win = loadImage("win_x2.png");
   img_playagain = loadImage("playagain_x2.png");
-  roboto_italic = loadFont("Roboto-LightItalic-20.vlw");
-  roboto = loadFont("Roboto-Light-24.vlw");
+  roboto_italic = createFont("Roboto-LightItalic", 20);
+  //roboto_italic = loadFont("Roboto-LightItalic-20.vlw");
+  roboto = createFont("Roboto-Light", 24);
+  //roboto = loadFont("Roboto-Light-24.vlw");
   introCurve = new RCurve();
   introCurve.createPoints(3.0, 40, 90, 40, 90, 360, 340, 360, 340);
   introDOR.addGesture("intro", introCurve.points);  // gesture recognition, passes points from RCurve 
