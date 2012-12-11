@@ -82,11 +82,11 @@ void calculateScale() {
 void goToStateIntro() {
   currentState = STATE_INTRO;
   println("We're now introducing the game.");
-  introFrameCount = frameCount;
+  introFrameCount = millis();
 }
 
 void restartIntro() {
-  introFrameCount = frameCount;
+  introFrameCount = millis();
   introFinished = false;
 }
 
@@ -102,12 +102,12 @@ void goToLevel(int levelNumber) {
   } else {
     goToStateDone();
   }
-  level.startFrame = frameCount;
+  level.startFrame = millis();
 }
 
 void restartLevel() {
   level.userPath.clear();
-  level.startFrame = frameCount;
+  level.startFrame = millis();
   level.success = false;
   level.finished = false;
 }
@@ -115,7 +115,7 @@ void restartLevel() {
 void goToStateDone() {
   currentState = STATE_DONE;
   println("We're now deciding to play again or leave.");
-  doneStartFrame = frameCount;
+  doneStartFrame = millis();
 }
 
 /*********************************** Nowe we can draw things ***********************************/
@@ -149,11 +149,11 @@ void mouseReleased() {
       if (val.score > scoreMin) {
         println("Success!");
         introSuccess = true;
-        introSuccessFrame = frameCount;
+        introSuccessFrame = millis();
       } else if (val.score < scoreMin) {
         println("Failure!");
         introFinished = true;
-        introFinishedFrame = frameCount;
+        introFinishedFrame = millis();
         introSuccess = false;
       }
     }
@@ -168,7 +168,7 @@ void mouseReleased() {
         level.scoreUser = val.score;
       }
     }
-    level.finishedFrame = frameCount;
+    level.finishedFrame = millis();
     level.finished = true;
   }
 }

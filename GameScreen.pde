@@ -225,8 +225,8 @@ void randomPoints(GameLevel level, int numPoints, int minDistance, boolean doesC
 
 void drawGameScreen() {
   drawStatusDots(255);
-  if (frameCount - level.startFrame < 150) {
-    float startPathGame = ((frameCount - level.startFrame))/100.0;
+  if (millis() - level.startFrame < 150) {
+    float startPathGame = ((millis() - level.startFrame))/100.0;
     level.curve.drawCurve(startPathGame, 0.4, shapeDefault, pathStrokeWeight);
   } 
   if (level.userPath.size() >= 1) {  // wrapping the following info in an if statement makes the user input go away on the next round on Android
@@ -243,10 +243,10 @@ void drawGameScreen() {
   if (level.finished == true) {
     level.curve.drawCurve(1, 2, shapeDefault, pathStrokeWeight);
   }
-  if (level.finished == true && level.success == true && (frameCount - level.finishedFrame) >= levelEnd) {
+  if (level.finished == true && level.success == true && (millis() - level.finishedFrame) >= levelEnd) {
     goToLevel(level.number+1);  // go to NEXT level (+1)
   }
-  if (level.finished == true && level.success == false && (frameCount - level.finishedFrame) >= levelEnd) {
+  if (level.finished == true && level.success == false && (millis() - level.finishedFrame) >= levelEnd) {
     restartLevel();  // restart level
   }
 //  if (level.number == 9 && level.success == true) {

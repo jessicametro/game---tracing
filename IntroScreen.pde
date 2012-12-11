@@ -21,8 +21,8 @@ void drawIntroScreen() {
   fill(#009999);
   textFont(roboto_italic);
   text("trace the shape", 200, 45);  
-  if (frameCount - introFrameCount < 150) {
-    float startPathIntro = ((frameCount - introFrameCount))/100.0;
+  if (millis() - introFrameCount < 150) {
+    float startPathIntro = ((millis() - introFrameCount))/100.0;
     introCurve.drawCurve(startPathIntro, 0.4, shapeDefault, pathStrokeWeight);
   }  
   if (userPath.size() >= 1) {  // wrapping the following info in an if statement makes the user input go away on the next round on Android
@@ -40,14 +40,14 @@ void drawIntroScreen() {
     tint(255);
     image(img_tryagain, 0, 0, 400, 400);
   }
-  if (introFinished == true && introSuccess == false && (frameCount - introFinishedFrame) >= introEnd) {
+  if (introFinished == true && introSuccess == false && (millis() - introFinishedFrame) >= introEnd) {
     restartIntro();
   }
   if (introSuccess == true) {
     tint(255);
     image(img_great, 0, 0, 400, 400);
   }
-  if (introSuccess == true && (frameCount - introSuccessFrame) >= introEnd) {
+  if (introSuccess == true && (millis() - introSuccessFrame) >= introEnd) {
     goToStateGame();
   }
 }

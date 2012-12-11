@@ -18,7 +18,7 @@ float againFadeInSpeed = 255.0 / (againAllFadedIn - winAllFadedOut);
 
 void drawDoneScreen() {
   
-  int relativeFrameCount = frameCount - doneStartFrame;
+  int relativeFrameCount = millis() - doneStartFrame;
   
   if (relativeFrameCount < winAllFadedIn) {
     drawStatusDots(255);

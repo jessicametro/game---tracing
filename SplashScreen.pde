@@ -8,14 +8,14 @@ float splashFadeSpeed = 255.0 / (splashEnd - splashStart);
 
 
 void drawSplashScreen() {
-  if (frameCount < splashStart) {
+  if (millis() < splashStart) {
     image(img_splash, 0, 0, 400, 400);
   }
-  if (frameCount >= splashStart && frameCount < splashEnd) {
-    tint(255, 255 - (frameCount-splashStart) * splashFadeSpeed);
+  if (millis() >= splashStart && millis() < splashEnd) {
+    tint(255, 255 - (millis()-splashStart) * splashFadeSpeed);
     image(img_splash, 0, 0, 400, 400);
   }
-  if (frameCount >= splashEnd) {
+  if (millis() >= splashEnd) {
     goToStateIntro();
   }
 }
