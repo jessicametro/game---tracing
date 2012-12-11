@@ -67,7 +67,8 @@ GameLevel createGameLevel(int levelNum) {
 //    newLevel.curve.addPoint(100,110);
 //    newLevel.curve.addPoint(60,310);
 //    newLevel.curve.endLines();
-    randomPoints(newLevel, 4, 150, true);
+    //randomPoints(newLevel, 6, 150, true, radians(20));
+    generateShape(newLevel, 3);
     newLevel.scoreMin = 12;
   } else if (levelNum == 4) {         // Level Five : Five Sides (connected)
     newLevel.curve.beginLines(3.0);
@@ -149,23 +150,30 @@ GameLevel createGameLevel(int levelNum) {
   return newLevel;
 }
 
-void randomPoints(GameLevel level, int numPoints, int minDistance, boolean doesConnect) {
+void randomPoints(GameLevel level, int numPoints, int minDistance, boolean doesConnect, float minAngle) {
   float firstX = 0;  // stores the first generated point to connect back at the end
   float firstY = 0;  // these need to be equal to zero otherwise it breaks
   float lastX = MAX_FLOAT;  // MAX_FLOAT = largest number a float can handle
   float lastY = MAX_FLOAT;
+  float lastAngle = MAX_FLOAT;
   level.curve.beginLines(3.0);
   for (int i = 0; i < numPoints; i++) {
     float x = random(40, 360);
     float y = random(80, 360);
-    while (dist(x, y, lastX, lastY) < minDistance) {  // this is to make sure the lines are long enough .. use while (instead of if) so that it continuously runs until it finds the right point
+    float newAngle = abs(atan2(y-lastY, x-lastX));  // atan2 calculates angle
+    println(newAngle);
+    println(lastAngle);
+    while (dist(x, y, lastX, lastY) < minDistance || abs(lastAngle - newAngle) < minAngle) {  // this is to make sure the lines are long enough .. use while (instead of if) so that it continuously runs until it finds the right point .. abs = absolute value    
       x = random(40, 360);
       y = random(80, 360);
+      newAngle = abs(atan2(y-lastY, x-lastX));
     }
+    
     if (i == 0) {
       firstX = x;
       firstY = y;
     }
+    lastAngle = abs(atan2(lastY-y, lastX-x));
     lastX = x;  // update to most recent value so it can calculate the *next* point
     lastY = y;
     level.curve.addPoint(x, y);
