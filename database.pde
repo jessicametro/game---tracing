@@ -1,4 +1,4 @@
-/* THREE SIDED SHAPES */
+
 
 void generateShape(GameLevel level, int numSides) {
   if (numSides == 3) {
@@ -6,6 +6,9 @@ void generateShape(GameLevel level, int numSides) {
     insertPoints(level, levelShape);
   } else if (numSides == 4) {
     Shape levelShape = chooseShape4();
+    insertPoints(level, levelShape);
+  } else if (numSides == 5) {
+    Shape levelShape = chooseShape5();
     insertPoints(level, levelShape);
   }
 }

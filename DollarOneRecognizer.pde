@@ -190,7 +190,7 @@ class DollarRecognizer {
 //
 Point[] Resample(Point[] pointsx, int n) {
   ArrayList<Point> points = new ArrayList<Point>();
-  for (int i=0; i< pointsx.length; i++) points.add(p[i]); //Arrays.asList(pointsx));
+  for (int i=0; i< pointsx.length; i++) points.add(pointsx[i]); //Arrays.asList(pointsx));
   float I = PathLength(pointsx) / (n - 1); // interval length
   float D = 0.0;
   ArrayList<Point> newpoints = new ArrayList();

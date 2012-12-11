@@ -38,10 +38,13 @@ GameLevel createGameLevel(int levelNum) {
 
   if (levelNum == 0) {                 // Level One : Circle
     generateShape(newLevel, 3);
-    newLevel.scoreMin = 10;
+    newLevel.scoreMin = 2;
   } else if (levelNum == 1) {
     generateShape(newLevel, 4);
-    newLevel.scoreMin = 10;
+    newLevel.scoreMin = 2;
+  } else if (levelNum == 2) {
+    generateShape(newLevel, 5);
+    newLevel.scoreMin = 2;
   
   
   
