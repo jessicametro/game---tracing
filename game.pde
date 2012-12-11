@@ -1,3 +1,8 @@
+/* LIBRARIES USED:
+  $1 Unistroke Recognizer : DollarOneRecognizer : http://depts.washington.edu/aimgroup/proj/dollar/ : Jacob O. Wobbrock, Andrew D. Wilson, Yang Li
+  RCurve : RJ Marsan
+*/
+
 color bkgd = #f2f2f2; 
 color textT = #009999;
 color textG = #aaaaaa; // same as at the end

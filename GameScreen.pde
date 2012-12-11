@@ -36,7 +36,7 @@ GameLevel createGameLevel(int levelNum) {
                                                      {310,130,350,170,310,230,270,270},
                                                      {270,270,230,310,130,350, 90,310},
                                                      { 90,310, 50,270, 90,210,130,170} });
-    newLevel.scoreMin = 9;  // specific number because it's easier : 20 is hard, 10 is easy
+    newLevel.scoreMin = 7;  // specific number because it's easier : 20 is hard, 10 is easy
   } else if (levelNum == 1) {         // Level Two : Two Sides (open)
     randomPoints(newLevel, 3, 200, false, radians(20));
     newLevel.scoreMin = 10;
@@ -45,10 +45,10 @@ GameLevel createGameLevel(int levelNum) {
     newLevel.scoreMin = 8;
   } else if (levelNum == 3) {         // Level Four : Four Sides
     generateShape(newLevel, 4);
-    newLevel.scoreMin = 12;
+    newLevel.scoreMin = 10;
   } else if (levelNum == 4) {         // Level Five : Five Sides
     generateShape(newLevel, 5);
-    newLevel.scoreMin = 8;
+    newLevel.scoreMin = 7;
   } else if (levelNum == 5) {         // Level Six : Six Sides
     generateShape(newLevel, 6);
     newLevel.scoreMin = 8;
