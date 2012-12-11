@@ -193,6 +193,89 @@ Shape generateShape5H() {
 
 
 
+/* SHAPE WITH SIX SIDES */
+
+Shape chooseShape6() {
+  int i = int(random(0, allShapesForLevel6.length));
+  return allShapesForLevel6[i];
+}
+
+Shape[] allShapesForLevel6 = { generateShape6A(), generateShape6B(), generateShape6C(), generateShape6D(), generateShape6E(), generateShape6F(), generateShape6G(), generateShape6H() };
+
+Shape generateShape6A() {
+  Shape s6A = new Shape();
+  s6A.points = new float[][] { {80, 320}, {80, 240}, {200, 120}, {240, 200}, {320, 240}, {320, 320}, {80, 320} };
+  return s6A;
+}
+
+Shape generateShape6B() {
+  Shape s6B = new Shape();
+  s6B.points = new float[][] { {200, 190}, {320, 120}, {320, 320}, {200, 250}, {80, 320}, {80, 120}, {200, 190} };
+  return s6B;
+}
+
+Shape generateShape6C() {
+  Shape s6C = new Shape();
+  s6C.points = new float[][] { {80, 260}, {80, 120}, {200, 180}, {320, 120}, {320, 260}, {200, 320}, {80, 260} };
+  return s6C;
+}
+
+Shape generateShape6D() {
+  Shape s6D = new Shape();
+  s6D.points = new float[][] { {310, 220}, {260, 120}, {140, 120}, {90, 220}, {140, 320}, {260, 320}, {310, 220} };
+  return s6D;
+}
+
+Shape generateShape6E() {
+  Shape s6E = new Shape();
+  s6E.points = new float[][] { {160, 220}, {160, 320}, {320, 320}, {240, 220}, {240, 120}, {80, 120}, {160, 220} };
+  return s6E;
+}
+
+Shape generateShape6F() {
+  Shape s6F = new Shape();
+  s6F.points = new float[][] { {260, 200}, {300, 310}, {180, 280}, {70, 330}, {200, 100}, {320, 160}, {260, 200} };
+  return s6F;
+}
+
+Shape generateShape6G() {
+  Shape s6G = new Shape();
+  s6G.points = new float[][] { {160, 100}, {80, 260}, {140, 340}, {260, 340}, {320, 260}, {240, 100}, {160, 100} };
+  return s6G;
+}
+
+Shape generateShape6H() {
+  Shape s6H = new Shape();
+  s6H.points = new float[][] { {200, 340}, {70, 220}, {120, 110}, {200, 190}, {280, 110}, {330, 220}, {200, 340} };
+  return s6H;
+}
+
+Shape generateShape6I() {
+  Shape s6I = new Shape();
+  s6I.points = new float[][] { {200, 220}, {300, 220}, {300, 120}, {100, 120}, {100, 320}, {300, 320}, {200, 220} };
+  return s6I;
+}
+
+Shape generateShape6J() {
+  Shape s6J = new Shape();
+  s6J.points = new float[][] { {90, 120}, {310, 120}, {210, 200}, {290, 320}, {170, 240}, {90, 340}, {90, 120} };
+  return s6J;
+}
+
+Shape generateShape6K() {
+  Shape s6K = new Shape();
+  s6K.points = new float[][] { {320, 260}, {260, 320}, {80, 320}, {80, 180}, {140, 120}, {320, 120}, {320, 260} };
+  return s6K;
+}
+
+Shape generateShape6L() {
+  Shape s6L = new Shape();
+  s6L.points = new float[][] { {320, 280}, {320, 160}, {240, 120}, {80, 120}, {80, 320}, {240, 320}, {320, 280} };
+  return s6L;
+}
+
+
+
 /* six sides 
 
 Shape generateShape5D() {
