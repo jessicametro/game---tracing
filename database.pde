@@ -126,3 +126,76 @@ Shape generateShape4I() {
   s4I.points = new float[][] { {200, 120}, {320, 320}, {80, 320}, {80, 120}, {200, 120} };
   return s4I;
 }
+
+
+
+
+/* SHAPE WITH FIVE SIDES */
+
+Shape chooseShape5() {
+  int i = int(random(0, allShapesForLevel5.length));
+  return allShapesForLevel5[i];
+}
+
+Shape[] allShapesForLevel5 = { generateShape5A(), generateShape5B(), generateShape5C(), generateShape5D(), generateShape5E(), generateShape5F(), generateShape5G(), generateShape5H() };
+
+Shape generateShape5A() {
+  Shape s5A = new Shape();
+  s5A.points = new float[][] { {310, 220}, {230, 100}, {100, 140}, {90, 270}, {220, 330}, {310, 220} };
+  return s5A;
+}
+
+Shape generateShape5B() {
+  Shape s5B = new Shape();
+  s5B.points = new float[][] { {80, 120}, {320, 120}, {320, 320}, {200, 230}, {80, 320}, {80, 120} };
+  return s5B;
+}
+
+Shape generateShape5C() {
+  Shape s5C = new Shape();
+  s5C.points = new float[][] { {70, 120}, {250, 340}, {330, 200}, {290, 120}, {210, 160}, {70, 120} };
+  return s5C;
+}
+
+Shape generateShape5D() {
+  Shape s5D = new Shape();
+  s5D.points = new float[][] { {80, 320}, {80, 240}, {200, 120}, {320, 240}, {320, 320}, {80, 320} };
+  return s5D;
+}
+
+Shape generateShape5E() {
+  Shape s5E = new Shape();
+  s5E.points = new float[][] { {320, 160}, {260, 100}, {140, 100}, {80, 160}, {200, 340}, {320, 160} };
+  return s5E;
+}
+
+Shape generateShape5F() {
+  Shape s5F = new Shape();
+  s5F.points = new float[][] { {60, 100}, {200, 260}, {340, 100}, {280, 340}, {120, 340}, {60, 100} };
+  return s5F;
+}
+
+Shape generateShape5G() {
+  Shape s5G = new Shape();
+  s5G.points = new float[][] { {220, 220}, {320, 160}, {120, 120}, {80, 200}, {200, 320}, {220, 220} };
+  return s5G;
+}
+
+Shape generateShape5H() {
+  Shape s5H = new Shape();
+  s5H.points = new float[][] { {100, 210}, {190, 120}, {300, 120}, {300, 320}, {100, 320}, {100, 210} };
+  return s5H;
+}
+
+
+
+
+/* six sides 
+
+Shape generateShape5D() {
+  Shape s5D = new Shape();
+  s5D.points = new float[][] { {80, 320}, {80, 240}, {200, 120}, {240, 200}, {320, 240}, {320, 320}, {80, 320} };
+  return s5D;
+}
+
+*/
