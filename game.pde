@@ -1,6 +1,6 @@
 /* LIBRARIES USED:
-  $1 Unistroke Recognizer : DollarOneRecognizer : http://depts.washington.edu/aimgroup/proj/dollar/ : Jacob O. Wobbrock, Andrew D. Wilson, Yang Li
-  RCurve : RJ Marsan
+  $1 Unistroke Recognizer : DollarOneRecognizer : Jacob O. Wobbrock, Andrew D. Wilson, Yang Li : http://depts.washington.edu/aimgroup/proj/dollar
+  RCurve : RJ Marsan : http://rsrch1.rjmarsan.com/rCurves.pde
 */
 
 color bkgd = #f2f2f2; 
