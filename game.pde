@@ -30,8 +30,8 @@ int currentState = STATE_START;
 
 
 void setup() {
-  size(800, 800);
-  //size(displayWidth, displayHeight);
+  //size(800, 800);
+  size(displayWidth, displayHeight);
   calculateScale();
   background(bkgd);
   frameRate(60);

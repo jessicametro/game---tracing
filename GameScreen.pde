@@ -42,7 +42,7 @@ GameLevel createGameLevel(int levelNum) {
                                                      {310,130,350,170,310,230,270,270},
                                                      {270,270,230,310,130,350, 90,310},
                                                      { 90,310, 50,270, 90,210,130,170} });
-    newLevel.scoreMin = 12;  // specific number because it's easier : 20 is hard, 10 is easy
+    newLevel.scoreMin = 9;  // specific number because it's easier : 20 is hard, 10 is easy
   } else if (levelNum == 1) {         // Level Two : Two Sides (open)
     newLevel.curve.beginLines(3.0);
     newLevel.curve.addPoint(120,110);
@@ -53,28 +53,28 @@ GameLevel createGameLevel(int levelNum) {
     newLevel.scoreMin = 10;
   } else if (levelNum == 2) {         // Level Three : Three Sides
     generateShape(newLevel, 3);
-    newLevel.scoreMin = 2;
+    newLevel.scoreMin = 8;
   } else if (levelNum == 3) {         // Level Four : Four Sides
     generateShape(newLevel, 4);
-    newLevel.scoreMin = 2;
+    newLevel.scoreMin = 12;
   } else if (levelNum == 4) {         // Level Five : Five Sides
     generateShape(newLevel, 5);
-    newLevel.scoreMin = 2;
+    newLevel.scoreMin = 8;
   } else if (levelNum == 5) {         // Level Six : Six Sides
     generateShape(newLevel, 6);
-    newLevel.scoreMin = 2;
+    newLevel.scoreMin = 8;
   } else if (levelNum == 6) {         // Level Seven : Seven Sides
     generateShape(newLevel, 7);
-    newLevel.scoreMin = 2;
+    newLevel.scoreMin = 6;
   } else if (levelNum == 7) {         // Level Eight : Eight Sides
     generateShape(newLevel, 8);
-    newLevel.scoreMin = 2;
+    newLevel.scoreMin = 7;
   } else if (levelNum == 8) {         // Level Nine : Nine Sides
     generateShape(newLevel, 9);
-    newLevel.scoreMin = 2;
+    newLevel.scoreMin = 6;
   } else if (levelNum == 9) {         // Level Ten : Ten Sides
     generateShape(newLevel, 10);
-    newLevel.scoreMin = 2;
+    newLevel.scoreMin = 4;
   }
   
   
