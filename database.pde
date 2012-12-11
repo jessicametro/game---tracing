@@ -13,6 +13,9 @@ void generateShape(GameLevel level, int numSides) {
   } else if (numSides == 6) {
     Shape levelShape = chooseShape6();
     insertPoints(level, levelShape);
+  } else if (numSides == 7) {
+    Shape levelShape = chooseShape7();
+    insertPoints(level, levelShape);
   }
 }
 
