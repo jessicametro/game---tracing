@@ -16,6 +16,7 @@ class GameLevel {
   int successFrame;
   float scoreMin;
   float scoreUser;
+  boolean allowUserInput = false;
 }
 
 int levelEnd = 2000;
@@ -228,20 +229,24 @@ void drawGameScreen() {
   if (millis() - level.startFrame < 2500) {
     float startPathGame = ((millis() - level.startFrame))/1600.0;
     level.curve.drawCurve(startPathGame, 0.4, shapeDefault, pathStrokeWeight);
-  } 
-  if (level.userPath.size() >= 1) {  // wrapping the following info in an if statement makes the user input go away on the next round on Android
-    noFill();
-    stroke(userInput);
-    strokeWeight(pathStrokeWeight);
-    strokeJoin(ROUND);
-    beginShape();
-      for (int i = 0; i < level.userPath.size(); i++) {
-        vertex(level.userPath.get(i).X, level.userPath.get(i).Y);  // array = userPath[i].x but this uses X also an array list = userPath.get(i).X
-      }
-    endShape();
+    level.allowUserInput = false;
+  } else {
+    level.allowUserInput = true;
+    if (level.userPath.size() >= 1) {  // wrapping the following info in an if statement makes the user input go away on the next round on Android
+      noFill();
+      stroke(userInput);
+      strokeWeight(pathStrokeWeight);
+      strokeJoin(ROUND);
+      beginShape();
+        for (int i = 0; i < level.userPath.size(); i++) {
+          vertex(level.userPath.get(i).X, level.userPath.get(i).Y);  // array = userPath[i].x but this uses X also an array list = userPath.get(i).X
+        }
+      endShape();
+    }
   }
   if (level.finished == true) {
     level.curve.drawCurve(1, 2, shapeDefault, pathStrokeWeight);
+    level.allowUserInput = false;
   }
   if (level.finished == true && level.success == true && (millis() - level.finishedFrame) >= levelEnd) {
     goToLevel(level.number+1);  // go to NEXT level (+1)

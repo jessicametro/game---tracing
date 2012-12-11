@@ -30,8 +30,8 @@ int currentState = STATE_START;
 
 
 void setup() {
-  //size(600, 600);
-  size(displayWidth, displayHeight);
+  size(800, 800);
+  //size(displayWidth, displayHeight);
   calculateScale();
   background(bkgd);
   frameRate(60);
@@ -135,9 +135,9 @@ float actualMouseY() {  // this is for the scale
 }
 
 void mouseDragged() { 
-  if (currentState == STATE_INTRO) {
+  if (currentState == STATE_INTRO && allowUserInput == true) {
     userPath.add(new Point(actualMouseX(), actualMouseY()));
-  } else if (currentState == STATE_GAME) {
+  } else if (currentState == STATE_GAME && level.allowUserInput == true) {
    level.userPath.add(new Point(actualMouseX(), actualMouseY()));
   }
 }
@@ -168,9 +168,9 @@ void mouseReleased() {
         level.success = true;
         level.scoreUser = val.score;
       }
+      level.finishedFrame = millis();
+      level.finished = true;
     }
-    level.finishedFrame = millis();
-    level.finished = true;
   }
 }
 

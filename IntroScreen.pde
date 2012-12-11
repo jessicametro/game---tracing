@@ -9,6 +9,8 @@ int introFrameCount;
 DollarRecognizer introDOR = new DollarRecognizer();  // gesture recognition
 ArrayList<Point> userPath = new ArrayList<Point>();  // this is the container for points the user inputs
 
+boolean allowUserInput = false;
+
 boolean introFinished;
 int introFinishedFrame;
 boolean introSuccess = false;
@@ -24,17 +26,21 @@ void drawIntroScreen() {
   if (millis() - introFrameCount < 2500) {
     float startPathIntro = ((millis() - introFrameCount))/1600.0;
     introCurve.drawCurve(startPathIntro, 0.4, shapeDefault, pathStrokeWeight);
-  }  
-  if (userPath.size() >= 1) {  // wrapping the following info in an if statement makes the user input go away on the next round on Android
-    noFill();
-    stroke(userInput);
-    strokeWeight(pathStrokeWeight);
-    strokeJoin(ROUND);
-    beginShape();
-      for (int i = 0; i < userPath.size(); i++) {
-        vertex(userPath.get(i).X, userPath.get(i).Y);  // array = userPath[i].x but this uses X also an array list = userPath.get(i).X
-      }
-    endShape();
+  } else if (introFinished == false && introSuccess == false) { // this is between when the game draws the shape and the confirmation // where the user can make their input
+    allowUserInput = true;  // enable user input now
+    if (userPath.size() >= 1) {  // wrapping the following info in an if statement makes the user input go away on the next round on Android
+      noFill();
+      stroke(userInput);
+      strokeWeight(pathStrokeWeight);
+      strokeJoin(ROUND);
+      beginShape();
+        for (int i = 0; i < userPath.size(); i++) {
+          vertex(userPath.get(i).X, userPath.get(i).Y);  // array = userPath[i].x but this uses X also an array list = userPath.get(i).X
+        }
+      endShape();
+    }
+  } else {
+    allowUserInput = false;  // disable user input again so user can't draw on confirmation screens
   }
   if (introFinished == true && introSuccess == false) {
     tint(255);
