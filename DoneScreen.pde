@@ -16,14 +16,13 @@ int againAllFadedIn = winAllFadedOut + 1500;
 float againFadeInSpeed = 255.0 / (againAllFadedIn - winAllFadedOut);
 
 
+
+
 void drawDoneScreen() {
-  
-  int relativeFrameCount = millis() - doneStartFrame;
-  
+  int relativeFrameCount = millis() - doneStartFrame;  
   if (relativeFrameCount < winAllFadedIn) {
     drawStatusDots(255);
     tint(255, relativeFrameCount * winFadeInSpeed);
-    //tint(255, map(relativeFrameCount, 0, winAllFadedIn, 0, 255));
     image(img_win, 0, 0, 400, 400);  
   } else if (relativeFrameCount >= winAllFadedIn && relativeFrameCount < winStartFadeOut) {
     drawStatusDots(255);
