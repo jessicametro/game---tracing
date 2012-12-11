@@ -37,6 +37,14 @@ GameLevel createGameLevel(int levelNum) {
   newLevel.curve = new RCurve();
 
   if (levelNum == 0) {                 // Level One : Circle
+    generateShape(newLevel, 3);
+    newLevel.scoreMin = 10;
+  } else if (levelNum == 1) {
+    generateShape(newLevel, 4);
+    newLevel.scoreMin = 10;
+  
+  
+  
 //    newLevel.curve.createPoints(3.0, new float[][] { {130,170,170,130,270, 90,310,130},
 //                                                     {310,130,350,170,310,230,270,270},
 //                                                     {270,270,230,310,130,350, 90,310},
@@ -68,8 +76,7 @@ GameLevel createGameLevel(int levelNum) {
 //    newLevel.curve.addPoint(60,310);
 //    newLevel.curve.endLines();
     //randomPoints(newLevel, 6, 150, true, radians(20));
-    generateShape(newLevel, 3);
-    newLevel.scoreMin = 12;
+    
   } else if (levelNum == 4) {         // Level Five : Five Sides (connected)
     newLevel.curve.beginLines(3.0);
     newLevel.curve.addPoint(170,218);

@@ -4,8 +4,12 @@ void generateShape(GameLevel level, int numSides) {
   if (numSides == 3) {
     Shape levelShape = chooseShape3();
     insertPoints(level, levelShape);
+  } else if (numSides == 4) {
+    Shape levelShape = chooseShape4();
+    insertPoints(level, levelShape);
   }
 }
+
 
 void insertPoints(GameLevel level, Shape levelShape) {
   level.curve.beginLines(3.0);
