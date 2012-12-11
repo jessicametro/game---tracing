@@ -45,6 +45,9 @@ GameLevel createGameLevel(int levelNum) {
   } else if (levelNum == 2) {
     generateShape(newLevel, 5);
     newLevel.scoreMin = 2;
+  } else if (levelNum == 3) {
+    generateShape(newLevel, 6);
+    newLevel.scoreMin = 2;
   
   
   

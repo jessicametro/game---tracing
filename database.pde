@@ -10,6 +10,9 @@ void generateShape(GameLevel level, int numSides) {
   } else if (numSides == 5) {
     Shape levelShape = chooseShape5();
     insertPoints(level, levelShape);
+  } else if (numSides == 6) {
+    Shape levelShape = chooseShape6();
+    insertPoints(level, levelShape);
   }
 }
 
@@ -200,7 +203,7 @@ Shape chooseShape6() {
   return allShapesForLevel6[i];
 }
 
-Shape[] allShapesForLevel6 = { generateShape6A(), generateShape6B(), generateShape6C(), generateShape6D(), generateShape6E(), generateShape6F(), generateShape6G(), generateShape6H() };
+Shape[] allShapesForLevel6 = { generateShape6A(), generateShape6B(), generateShape6C(), generateShape6D(), generateShape6E(), generateShape6F(), generateShape6G(), generateShape6H(), generateShape6I(), generateShape6J(), generateShape6K(), generateShape6L() };
 
 Shape generateShape6A() {
   Shape s6A = new Shape();
@@ -276,12 +279,101 @@ Shape generateShape6L() {
 
 
 
-/* six sides 
 
-Shape generateShape5D() {
-  Shape s5D = new Shape();
-  s5D.points = new float[][] { {80, 320}, {80, 240}, {200, 120}, {240, 200}, {320, 240}, {320, 320}, {80, 320} };
-  return s5D;
+/* SHAPE WITH SEVEN SIDES */
+
+Shape chooseShape7() {
+  int i = int(random(0, allShapesForLevel7.length));
+  return allShapesForLevel7[i];
 }
 
+Shape[] allShapesForLevel7 = { generateShape7A(), generateShape7B(), generateShape7C(), generateShape7D(), generateShape7E(), generateShape7F(), generateShape7G(), generateShape7H(), generateShape7I(), generateShape7J(), generateShape7K(), generateShape7L(), generateShape7M() };
+
+Shape generateShape7A() {
+  Shape s7A = new Shape();
+  s7A.points = new float[][] { {250, 110}, {70, 110}, {70, 330}, {160, 250}, {160, 330}, {300, 180}, {160, 180}, {250, 110}  };
+  return s7A;
+}
+
+Shape generateShape7B() {
+  Shape s7B = new Shape();
+  s7B.points = new float[][] { {70, 110}, {70, 330}, {160, 250}, {160, 330}, {330, 330}, {330, 170}, {250, 110}, {70, 110} };
+  return s7B;
+}
+
+Shape generateShape7C() {
+  Shape s7C = new Shape();
+  s7C.points = new float[][] { {200, 160}, {270, 320}, {320, 320}, {320, 120}, {80, 120}, {80, 320}, {130, 320}, {200, 160} };
+  return s7C;
+}
+
+Shape generateShape7D() {
+  Shape s7D = new Shape();
+  s7D.points = new float[][] { {250, 120}, {80, 320}, {140, 320}, {270, 170}, {270, 320}, {320, 320}, {320, 120}, {250, 120} };
+  return s7D;
+}
+
+Shape generateShape7E() {
+  Shape s7E = new Shape();
+  s7E.points = new float[][] { {320, 120}, {290, 270}, {180, 320}, {80, 250}, {160, 200}, {80, 120}, {210, 160}, {320, 120}  };
+  return s7E;
+}
+
+Shape generateShape7F() {
+  Shape s7F = new Shape();
+  s7F.points = new float[][] { {220, 220}, {320, 220}, {320, 320}, {180, 320}, {120, 260}, {120, 120}, {220, 120}, {220, 220} };
+  return s7F;
+}
+
+Shape generateShape7G() {
+  Shape s7G = new Shape();
+  s7G.points = new float[][] { {310, 150}, {330, 250}, {260, 340}, {140, 340}, {70, 250}, {90, 150}, {200, 100}, {310, 150} };
+  return s7G;
+}
+
+Shape generateShape7H() {
+  Shape s7H = new Shape();
+  s7H.points = new float[][] { {320, 170}, {270, 270}, {320, 320}, {80, 320}, {130, 170}, {80, 120}, {270, 120}, {320, 170} };
+  return s7H;
+}
+
+Shape generateShape7I() {
+  Shape s7I = new Shape();
+  s7I.points = new float[][] { {160, 250}, {160, 320}, {70, 220}, {150, 110}, {330, 180}, {320, 330}, {230, 210}, {160, 250}  };
+  return s7I;
+}
+
+Shape generateShape7J() {
+  Shape s7J = new Shape();
+  s7J.points = new float[][] { {80, 330}, {230, 330}, {170, 280}, {300, 140}, {270, 110}, {130, 250}, {80, 190}, {80, 330} };
+  return s7J;
+}
+
+Shape generateShape7K() {
+  Shape s7K = new Shape();
+  s7K.points = new float[][] { {80, 330}, {230, 330}, {170, 280}, {320, 210}, {270, 110}, {80, 120}, {130, 180}, {80, 330} };
+  return s7K;
+}
+
+Shape generateShape7L() {
+  Shape s7L = new Shape();
+  s7L.points = new float[][] { {200, 270}, {240, 180}, {200, 80}, {120, 270}, {160, 360}, {280, 360}, {280, 270}, {200, 270} };
+  return s7L;
+}
+
+Shape generateShape7M() {
+  Shape s7M = new Shape();
+  s7M.points = new float[][] { {330, 190}, {210, 190}, {160, 90}, {90, 230}, {180, 350}, {320, 350}, {240, 280}, {330, 190} };
+  return s7M;
+}
+
+
+
+
+/*
+Shape generateShape8A() {
+  Shape s8A = new Shape();
+  s8A.points = new float[][] { {240, 190}, {300, 360}, {100, 360}, {220, 320}, {180, 210}, {110, 240}, {190, 80}, {320, 160} };
+  return s8A;
+}
 */
