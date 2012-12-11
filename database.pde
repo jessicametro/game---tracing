@@ -22,6 +22,9 @@ void generateShape(GameLevel level, int numSides) {
   } else if (numSides == 9) {
     Shape levelShape = chooseShape9();
     insertPoints(level, levelShape);
+  } else if (numSides == 10) {
+    Shape levelShape = chooseShape10();
+    insertPoints(level, levelShape);
   }
 }
 
@@ -488,4 +491,64 @@ Shape generateShape9G() {
   Shape s9G = new Shape();
   s9G.points = new float[][] { {250, 320}, {150, 290}, {170, 230}, {90, 210}, {110, 140}, {200, 120}, {280, 160}, {240, 210}, {320, 250}, {250, 320}  };
   return s9G;
+}
+
+
+
+
+/* SHAPE WITH TEN SIDES */
+
+Shape chooseShape10() {
+  int i = int(random(0, allShapesForLevel10.length));
+  return allShapesForLevel10[i];
+}
+
+Shape[] allShapesForLevel10 = { generateShape10A(), generateShape10B(), generateShape10C(), generateShape10D(), generateShape10E(), generateShape10F(), generateShape10G(), generateShape10H() };
+
+Shape generateShape10A() {
+  Shape s10A = new Shape();
+  s10A.points = new float[][] { {290, 170}, {240, 120}, {110, 120}, {160, 170}, {110, 220}, {160, 270}, {110, 320}, {240, 320}, {290, 270}, {240, 220}, {290, 170} };
+  return s10A;
+}
+
+Shape generateShape10B() {
+  Shape s10B = new Shape();
+  s10B.points = new float[][] { {300, 250}, {300, 110}, {230, 110}, {230, 180}, {160, 180}, {160, 250}, {90, 250}, {90, 320}, {230, 320}, {230, 250}, {300, 250} };
+  return s10B;
+}
+
+Shape generateShape10C() {
+  Shape s10C = new Shape();
+  s10C.points = new float[][] { {160, 180}, {260, 180}, {260, 230}, {210, 230}, {210, 320}, {320, 320}, {320, 120}, {80, 120}, {80, 320}, {160, 320}, {160, 180} };
+  return s10C;
+}
+
+Shape generateShape10D() {
+  Shape s10D = new Shape();
+  s10D.points = new float[][] { {200, 320}, {260, 250}, {320, 320}, {320, 120}, {260, 190}, {200, 120}, {140, 190}, {80, 120}, {80, 320}, {140, 250}, {200, 320} };
+  return s10D;
+}
+
+Shape generateShape10E() {
+  Shape s10E = new Shape();
+  s10E.points = new float[][] { {320, 320}, {320, 210}, {270, 210}, {230, 170}, {230, 120}, {80, 120}, {80, 230}, {130, 230}, {170, 270}, {170, 320}, {320, 320} };
+  return s10E;
+}
+
+Shape generateShape10F() {
+  Shape s10F = new Shape();
+  s10F.points = new float[][] { {250, 320}, {320, 250}, {320, 190}, {250, 190}, {250, 120}, {150, 120}, {80, 190}, {80, 250}, {150, 250}, {150, 320}, {250, 320} };
+  return s10F;
+}
+
+Shape generateShape10G() {
+  Shape s10G = new Shape();
+  s10G.points = new float[][] { {200, 120}, {200, 160}, {340, 100}, {280, 200}, {320, 240}, {240, 260}, {320, 360}, {160, 360}, {80, 240}, {80, 90}, {200, 120}  };
+  return s10G;
+}
+
+Shape generateShape10H() {
+  Shape s10H = new Shape();
+  s10H.points = new float[][] { {260, 250}, {330, 180}, {240, 170}, {200, 90}, {160, 170}, {70, 180}, {140, 250}, {100, 350}, {200, 310}, {300, 350}, {260, 250}  };
+  return s10H;
 }
