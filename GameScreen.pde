@@ -51,6 +51,9 @@ GameLevel createGameLevel(int levelNum) {
   } else if (levelNum == 4) {
     generateShape(newLevel, 7);
     newLevel.scoreMin = 2;
+  } else if (levelNum == 5) {
+    generateShape(newLevel, 8);
+    newLevel.scoreMin = 2;
   
   
   
@@ -86,27 +89,27 @@ GameLevel createGameLevel(int levelNum) {
 //    newLevel.curve.endLines();
     //randomPoints(newLevel, 6, 150, true, radians(20));
     
-  } else if (levelNum == 4) {         // Level Five : Five Sides (connected)
-    newLevel.curve.beginLines(3.0);
-    newLevel.curve.addPoint(170,218);
-    newLevel.curve.addPoint(210,100);
-    newLevel.curve.addPoint(85,100);
-    newLevel.curve.addPoint(95,340);
-    newLevel.curve.addPoint(330,345);
-    newLevel.curve.addPoint(170,218);
-    newLevel.curve.endLines();
-    newLevel.scoreMin = 5;
-  } else if (levelNum == 5) {         // Level Six : Six Sides (connected)
-    newLevel.curve.beginLines(3.0);
-    newLevel.curve.addPoint(180,260);
-    newLevel.curve.addPoint(160,330);
-    newLevel.curve.addPoint(310,340);
-    newLevel.curve.addPoint(220,220);
-    newLevel.curve.addPoint(310,100);
-    newLevel.curve.addPoint(70,130);
-    newLevel.curve.addPoint(180,260);
-    newLevel.curve.endLines();
-    newLevel.scoreMin = 8;
+//  } else if (levelNum == 4) {         // Level Five : Five Sides (connected)
+//    newLevel.curve.beginLines(3.0);
+//    newLevel.curve.addPoint(170,218);
+//    newLevel.curve.addPoint(210,100);
+//    newLevel.curve.addPoint(85,100);
+//    newLevel.curve.addPoint(95,340);
+//    newLevel.curve.addPoint(330,345);
+//    newLevel.curve.addPoint(170,218);
+//    newLevel.curve.endLines();
+//    newLevel.scoreMin = 5;
+//  } else if (levelNum == 5) {         // Level Six : Six Sides (connected)
+//    newLevel.curve.beginLines(3.0);
+//    newLevel.curve.addPoint(180,260);
+//    newLevel.curve.addPoint(160,330);
+//    newLevel.curve.addPoint(310,340);
+//    newLevel.curve.addPoint(220,220);
+//    newLevel.curve.addPoint(310,100);
+//    newLevel.curve.addPoint(70,130);
+//    newLevel.curve.addPoint(180,260);
+//    newLevel.curve.endLines();
+//    newLevel.scoreMin = 8;
   } else if (levelNum == 6) {         // Level Seven : Seven Sides (connected)
     newLevel.curve.beginLines(3.0);
     newLevel.curve.addPoint(178,350);

@@ -16,6 +16,9 @@ void generateShape(GameLevel level, int numSides) {
   } else if (numSides == 7) {
     Shape levelShape = chooseShape7();
     insertPoints(level, levelShape);
+  } else if (numSides == 8) {
+    Shape levelShape = chooseShape8();
+    insertPoints(level, levelShape);
   }
 }
 
@@ -373,10 +376,59 @@ Shape generateShape7M() {
 
 
 
-/*
+/* SHAPE WITH EIGHT SIDES */
+
+Shape chooseShape8() {
+  int i = int(random(0, allShapesForLevel8.length));
+  return allShapesForLevel8[i];
+}
+
+Shape[] allShapesForLevel8 = { generateShape8A(), generateShape8B(), generateShape8C(), generateShape8D(), generateShape8E(), generateShape8F(), generateShape8G(), generateShape8H() };
+
 Shape generateShape8A() {
   Shape s8A = new Shape();
-  s8A.points = new float[][] { {240, 190}, {300, 360}, {100, 360}, {220, 320}, {180, 210}, {110, 240}, {190, 80}, {320, 160} };
+  s8A.points = new float[][] { {240, 190}, {300, 360}, {100, 360}, {220, 320}, {180, 210}, {110, 240}, {190, 80}, {320, 160}, {240, 190} };
   return s8A;
 }
-*/
+
+Shape generateShape8B() {
+  Shape s8B = new Shape();
+  s8B.points = new float[][] { {250, 250}, {320, 250}, {320, 120}, {150, 120}, {150, 190}, {80, 190}, {80, 320}, {250, 320}, {250, 250}  };
+  return s8B;
+}
+
+Shape generateShape8C() {
+  Shape s8C = new Shape();
+  s8C.points = new float[][] { {120, 250}, {320, 250}, {320, 120}, {150, 120}, {280, 190}, {80, 190}, {80, 320}, {250, 320}, {120, 250} };
+  return s8C;
+}
+
+Shape generateShape8D() {
+  Shape s8D = new Shape();
+  s8D.points = new float[][] { {220, 200}, {80, 200}, {180, 320}, {250, 320}, {180, 240}, {320, 240}, {220, 120}, {150, 120}, {220, 200} };
+  return s8D;
+}
+
+Shape generateShape8E() {
+  Shape s8E = new Shape();
+  s8E.points = new float[][] { {240, 310}, {240, 220}, {320, 220}, {320, 130}, {80, 130}, {80, 220}, {160, 220}, {160, 310}, {240, 310} };
+  return s8E;
+}
+
+Shape generateShape8F() {
+  Shape s8F = new Shape();
+  s8F.points = new float[][] { {320, 320}, {280, 220}, {320, 120}, {200, 170}, {80, 120}, {130, 220}, {80, 320}, {200, 270}, {320, 320} };
+  return s8F;
+}
+
+Shape generateShape8G() {
+  Shape s8G = new Shape();
+  s8G.points = new float[][] { {200, 120}, {170, 190}, {80, 220}, {170, 250}, {200, 320}, {230, 250}, {320, 220}, {230, 190}, {200, 120} };
+  return s8G;
+}
+
+Shape generateShape8H() {
+  Shape s8H = new Shape();
+  s8H.points = new float[][] { {130, 150}, {100, 220}, {130, 290}, {200, 320}, {270, 290}, {300, 220}, {270, 150}, {200, 120}, {130, 150} };
+  return s8H;
+}
