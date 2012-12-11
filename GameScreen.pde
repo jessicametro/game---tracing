@@ -54,6 +54,9 @@ GameLevel createGameLevel(int levelNum) {
   } else if (levelNum == 5) {
     generateShape(newLevel, 8);
     newLevel.scoreMin = 2;
+  } else if (levelNum == 6) {
+    generateShape(newLevel, 9);
+    newLevel.scoreMin = 2;
   
   
   
@@ -110,18 +113,18 @@ GameLevel createGameLevel(int levelNum) {
 //    newLevel.curve.addPoint(180,260);
 //    newLevel.curve.endLines();
 //    newLevel.scoreMin = 8;
-  } else if (levelNum == 6) {         // Level Seven : Seven Sides (connected)
-    newLevel.curve.beginLines(3.0);
-    newLevel.curve.addPoint(178,350);
-    newLevel.curve.addPoint(94,230);
-    newLevel.curve.addPoint(158,90);
-    newLevel.curve.addPoint(205,190);
-    newLevel.curve.addPoint(335,188);
-    newLevel.curve.addPoint(237,280);
-    newLevel.curve.addPoint(314,350);
-    newLevel.curve.addPoint(178,350);
-    newLevel.curve.endLines();
-    newLevel.scoreMin = 5;
+//  } else if (levelNum == 6) {         // Level Seven : Seven Sides (connected)
+//    newLevel.curve.beginLines(3.0);
+//    newLevel.curve.addPoint(178,350);
+//    newLevel.curve.addPoint(94,230);
+//    newLevel.curve.addPoint(158,90);
+//    newLevel.curve.addPoint(205,190);
+//    newLevel.curve.addPoint(335,188);
+//    newLevel.curve.addPoint(237,280);
+//    newLevel.curve.addPoint(314,350);
+//    newLevel.curve.addPoint(178,350);
+//    newLevel.curve.endLines();
+//    newLevel.scoreMin = 5;
   } else if (levelNum == 7) {         // Level Eight : Eight Sides (connected..arrow)
     newLevel.curve.beginLines(3.0);
     newLevel.curve.addPoint(244,190);

@@ -19,6 +19,9 @@ void generateShape(GameLevel level, int numSides) {
   } else if (numSides == 8) {
     Shape levelShape = chooseShape8();
     insertPoints(level, levelShape);
+  } else if (numSides == 9) {
+    Shape levelShape = chooseShape9();
+    insertPoints(level, levelShape);
   }
 }
 
@@ -431,4 +434,58 @@ Shape generateShape8H() {
   Shape s8H = new Shape();
   s8H.points = new float[][] { {130, 150}, {100, 220}, {130, 290}, {200, 320}, {270, 290}, {300, 220}, {270, 150}, {200, 120}, {130, 150} };
   return s8H;
+}
+
+
+
+
+/* SHAPE WITH NINE SIDES */
+
+Shape chooseShape9() {
+  int i = int(random(0, allShapesForLevel9.length));
+  return allShapesForLevel9[i];
+}
+
+Shape[] allShapesForLevel9 = { generateShape9A(), generateShape9B(), generateShape9C(), generateShape9D(), generateShape9E(), generateShape9F(), generateShape9G() };
+
+Shape generateShape9A() {
+  Shape s9A = new Shape();
+  s9A.points = new float[][] { {150, 190}, {80, 190}, {80, 260}, {150, 260}, {150, 330}, {220, 330}, {220, 260}, {290, 260}, {150, 120}, {150, 190} };
+  return s9A;
+}
+
+Shape generateShape9B() {
+  Shape s9B = new Shape();
+  s9B.points = new float[][] { {220, 180}, {80, 120}, {120, 220}, {80, 320}, {220, 260}, {220, 320}, {320, 320}, {320, 120}, {220, 120}, {220, 180} };
+  return s9B;
+}
+
+Shape generateShape9C() {
+  Shape s9C = new Shape();
+  s9C.points = new float[][] { {80, 200}, {80, 320}, {180, 320}, {180, 270}, {230, 270}, {230, 320}, {320, 320}, {320, 200}, {200, 120}, {80, 200} };
+  return s9C;
+}
+
+Shape generateShape9D() {
+  Shape s9D = new Shape();
+  s9D.points = new float[][] { {190, 170}, {180, 240}, {260, 270}, {290, 330}, {310, 250}, {250, 220}, {260, 150}, {180, 110}, {70, 110}, {190, 170} };
+  return s9D;
+}
+
+Shape generateShape9E() {
+  Shape s9E = new Shape();
+  s9E.points = new float[][] { {80, 250}, {80, 190}, {140, 190}, {140, 120}, {230, 120}, {320, 220}, {230, 320}, {140, 320}, {140, 250}, {80, 250} };
+  return s9E;
+}
+
+Shape generateShape9F() {
+  Shape s9F = new Shape();
+  s9F.points = new float[][] { {230, 120}, {230, 190}, {320, 220}, {320, 320}, {230, 320}, {180, 250}, {80, 320}, {80, 120}, {130, 190}, {230, 120} };
+  return s9F;
+}
+
+Shape generateShape9G() {
+  Shape s9G = new Shape();
+  s9G.points = new float[][] { {250, 320}, {150, 290}, {170, 230}, {90, 210}, {110, 140}, {200, 120}, {280, 160}, {240, 210}, {320, 250}, {250, 320}  };
+  return s9G;
 }
