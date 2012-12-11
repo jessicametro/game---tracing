@@ -2,8 +2,8 @@
 
 
 PImage img_splash;
-int splashStart = 120;
-int splashEnd = 150;
+int splashStart = 2000;
+int splashEnd = 2500;
 float splashFadeSpeed = 255.0 / (splashEnd - splashStart);
 
 

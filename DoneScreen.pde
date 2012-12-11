@@ -5,14 +5,14 @@ PImage img_win;
 PImage img_playagain;
 
 int doneStartFrame;
-int winAllFadedIn = 60;
+int winAllFadedIn = 1000;
 float winFadeInSpeed = 255.0 / winAllFadedIn;
 
-int winStartFadeOut = winAllFadedIn + 90;
-int winAllFadedOut = winStartFadeOut + 60;
+int winStartFadeOut = winAllFadedIn + 1500;
+int winAllFadedOut = winStartFadeOut + 1000;
 float winFadeOutSpeed = 255.0 / (winAllFadedOut - winStartFadeOut);
 
-int againAllFadedIn = winAllFadedOut + 90;
+int againAllFadedIn = winAllFadedOut + 1500;
 float againFadeInSpeed = 255.0 / (againAllFadedIn - winAllFadedOut);
 
 

@@ -18,7 +18,7 @@ class GameLevel {
   float scoreUser;
 }
 
-int levelEnd = 120;
+int levelEnd = 2000;
 
 
 /*
@@ -225,8 +225,8 @@ void randomPoints(GameLevel level, int numPoints, int minDistance, boolean doesC
 
 void drawGameScreen() {
   drawStatusDots(255);
-  if (millis() - level.startFrame < 150) {
-    float startPathGame = ((millis() - level.startFrame))/100.0;
+  if (millis() - level.startFrame < 2500) {
+    float startPathGame = ((millis() - level.startFrame))/1600.0;
     level.curve.drawCurve(startPathGame, 0.4, shapeDefault, pathStrokeWeight);
   } 
   if (level.userPath.size() >= 1) {  // wrapping the following info in an if statement makes the user input go away on the next round on Android

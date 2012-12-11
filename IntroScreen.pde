@@ -13,7 +13,7 @@ boolean introFinished;
 int introFinishedFrame;
 boolean introSuccess = false;
 int introSuccessFrame;
-int introEnd = 120;
+int introEnd = 2000;
 
 
 void drawIntroScreen() {
@@ -21,8 +21,8 @@ void drawIntroScreen() {
   fill(#009999);
   textFont(roboto_italic);
   text("trace the shape", 200, 45);  
-  if (millis() - introFrameCount < 150) {
-    float startPathIntro = ((millis() - introFrameCount))/100.0;
+  if (millis() - introFrameCount < 2500) {
+    float startPathIntro = ((millis() - introFrameCount))/1600.0;
     introCurve.drawCurve(startPathIntro, 0.4, shapeDefault, pathStrokeWeight);
   }  
   if (userPath.size() >= 1) {  // wrapping the following info in an if statement makes the user input go away on the next round on Android
