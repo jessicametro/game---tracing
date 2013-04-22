@@ -32,7 +32,7 @@ GameLevel createGameLevel(int levelNum) {
   newLevel.curve = new RCurve();
 
   if (levelNum == 0) {                // Level One : Circle
-    newLevel.curve.createPoints(3.0, new float[][] { {130,170,170,130,270, 90,310,130},
+    newLevel.curve.createPoints_fromlist(3.0, new float[][] { {130,170,170,130,270, 90,310,130},
                                                      {310,130,350,170,310,230,270,270},
                                                      {270,270,230,310,130,350, 90,310},
                                                      { 90,310, 50,270, 90,210,130,170} });
@@ -65,7 +65,7 @@ GameLevel createGameLevel(int levelNum) {
     generateShape(newLevel, 10);
     newLevel.scoreMin = 2;
   }
-  newLevel.recognizer.addGesture(newLevel.name, newLevel.curve.points);
+  newLevel.recognizer.addGesture_floats(newLevel.name, newLevel.curve.points);
   return newLevel;
 }
 
@@ -83,8 +83,8 @@ void randomPoints(GameLevel level, int numPoints, int minDistance, boolean doesC
     float x = random(40, 360);
     float y = random(80, 360);
     float newAngle = abs(atan2(y-lastY, x-lastX));  // atan2 calculates angle
-    println(newAngle);
-    println(lastAngle);
+    debugprint(newAngle);
+    debugprint(lastAngle);
     while (dist(x, y, lastX, lastY) < minDistance || abs(lastAngle - newAngle) < minAngle) {  // this is to make sure the lines are long enough .. use while (instead of if) so that it continuously runs until it finds the right point .. abs = absolute value    
       x = random(40, 360);
       y = random(80, 360);

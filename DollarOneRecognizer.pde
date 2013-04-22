@@ -114,6 +114,13 @@ class Result {
   }
 }
 
+Point[] toArray(ArrayList<Point> points) {
+  Point[] out = new Point[points.size()];
+  for (int i=0; i<points.size(); i++) {
+     out[i] = points.get(i); 
+  }
+  return out;
+}
 
 //
 // DollarRecognizer class
@@ -131,9 +138,9 @@ class DollarRecognizer {
   // The $1 Gesture Recognizer API begins here -- 3 methods: Recognize(), AddGesture(), and DeleteUserGestures()
   //
   public Result recognize(ArrayList<Point> points, boolean useProtractor) {
-    return recognize(points.toArray(new Point[0]), useProtractor);
+    return recognize_inner(toArray(points), useProtractor);
   }
-  public Result recognize(Point[] points, boolean useProtractor) {
+  public Result recognize_inner(Point[] points, boolean useProtractor) {
     points = Resample(points, NumPoints);
     float radians = IndicativeAngle(points);
     points = RotateBy(points, -radians);
@@ -141,7 +148,7 @@ class DollarRecognizer {
     points = TranslateTo(points, Origin);
     float[] vector = Vectorize(points); // for Protractor
 
-    float b = Float.MAX_VALUE;
+    float b = 999999;
     int u = -1;
     for (int i = 0; i < this.Unistrokes.size(); i++) // for each unistroke
     {
@@ -158,15 +165,15 @@ class DollarRecognizer {
     return (u == -1) ? new Result("No match.", 0.0) : new Result(this.Unistrokes.get(u).Name, useProtractor ? 1.0 / b : 1.0 - b / HalfDiagonal);
   }
   
-  public int addGesture(String name, float[] floats) {
+  public int addGesture_floats(String name, float[] floats) {
     Point[] points = new Point[floats.length/2];
     for (int i=0; i<floats.length; i+=2) {
       points[i/2] = new Point(floats[i], floats[i+1]); 
     }
-    return addGesture(name, points);
+    return addGesture_points(name, points);
   }
   
-  public int addGesture(String name, Point[] points) {
+  public int addGesture_points(String name, Point[] points) {
     this.Unistrokes.add(new Unistroke(name, points)); // append new unistroke
     int num = 0;
     for (int i = 0; i < this.Unistrokes.size(); i++) {
@@ -209,7 +216,7 @@ Point[] Resample(Point[] pointsx, int n) {
   }
   if (newpoints.size() == n - 1) // somtimes we fall a rounding-error short of adding the last point, so add it if so
   newpoints.add(new Point(points.get(points.size() - 1).X, points.get(points.size() - 1).Y));
-  return newpoints.toArray(new Point[0]);
+  return toArray(newpoints);
 }
 
 float IndicativeAngle(Point[] points) {
@@ -219,15 +226,15 @@ float IndicativeAngle(Point[] points) {
 
 Point[] RotateBy(Point[] points, float radians) {
   Point c = Centroid(points);
-  float cos = cos(radians);
-  float sin = sin(radians);
+  float ncos = cos(radians);
+  float nsin = sin(radians);
   ArrayList<Point> newpoints = new ArrayList<Point>();
   for (int i = 0; i < points.length; i++) {
-    float qx = (points[i].X - c.X) * cos - (points[i].Y - c.Y) * sin + c.X;
-    float qy = (points[i].X - c.X) * sin + (points[i].Y - c.Y) * cos + c.Y;
+    float qx = (points[i].X - c.X) * ncos - (points[i].Y - c.Y) * nsin + c.X;
+    float qy = (points[i].X - c.X) * nsin + (points[i].Y - c.Y) * ncos + c.Y;
     newpoints.add(new Point(qx, qy));
   }
-  return newpoints.toArray(new Point[0]);
+  return toArray(newpoints);
 }
 
 Point[] ScaleTo(Point[] points, float size) { // non-uniform scale; assumes 2D gestures (i.e., no lines)
@@ -238,7 +245,7 @@ Point[] ScaleTo(Point[] points, float size) { // non-uniform scale; assumes 2D g
     float qy = points[i].Y * (size / B.Height);
     newpoints.add(new Point(qx, qy));
   }
-  return newpoints.toArray(new Point[0]);
+  return toArray(newpoints);
 }
 
 Point[] TranslateTo(Point[] points, Point pt) { // translates points' centroid
@@ -249,7 +256,7 @@ Point[] TranslateTo(Point[] points, Point pt) { // translates points' centroid
     float qy = points[i].Y + pt.Y - c.Y;
     newpoints.add(new Point(qx, qy));
   }
-  return newpoints.toArray(new Point[0]);
+  return toArray(newpoints);
 }
 
 float[] Vectorize(Point[] points) { // for Protractor
@@ -315,7 +322,7 @@ Point Centroid(Point[] points) {
   return new Point(x, y);
 }
 Rectangle BoundingBox(Point[] points) {
-  float minX = Float.MAX_VALUE, maxX = Float.MIN_VALUE, minY = Float.MAX_VALUE, maxY = Float.MIN_VALUE;
+  float minX = 999999, maxX = -999999, minY = 999999, maxY = -999999;
   for (int i = 0; i < points.length; i++) {
     minX = min(minX, points[i].X);
     minY = min(minY, points[i].Y);

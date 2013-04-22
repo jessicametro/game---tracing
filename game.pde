@@ -18,7 +18,7 @@ PFont roboto;
 
 int pathStrokeWeight = 24;
 
-float scoreMin = 1.1;
+float scoreMin = 0.7;//1.1;
 
 float s;
 float left;
@@ -35,8 +35,9 @@ int currentState = STATE_START;
 
 
 void setup() {
-  //size(800, 800);
-  size(displayWidth, displayHeight);
+  size(800, 800);
+  //size(displayWidth, displayHeight);
+  size(window.innerWidth, window.innerHeight); //processingjs only
   calculateScale();
   background(bkgd);
   frameRate(60);
@@ -51,8 +52,8 @@ void setup() {
   roboto = createFont("Roboto-Light", 24*s, true);
   //roboto = loadFont("Roboto-Light-24.vlw");
   introCurve = new RCurve();
-  introCurve.createPoints(3.0, 40, 90, 40, 90, 360, 340, 360, 340);
-  introDOR.addGesture("intro", introCurve.points);  // gesture recognition, passes points from RCurve 
+  introCurve.createPoints_manual(3.0, 40, 90, 40, 90, 360, 340, 360, 340);
+  introDOR.addGesture_floats("intro", introCurve.points);  // gesture recognition, passes points from RCurve 
 }
 
 void draw() {
@@ -87,7 +88,7 @@ void calculateScale() {
 
 void goToStateIntro() {
   currentState = STATE_INTRO;
-  println("We're now introducing the game.");
+  debugprint("We're now introducing the game.");
   introFrameCount = millis();
 }
 
@@ -98,7 +99,7 @@ void restartIntro() {
 
 void goToStateGame() {
   currentState = STATE_GAME;
-  println("We're now playing the game.");
+  debugprint("We're now playing the game.");
   goToLevel(0);
 }
 
@@ -120,7 +121,7 @@ void restartLevel() {
 
 void goToStateDone() {
   currentState = STATE_DONE;
-  println("We're now deciding to play again or leave.");
+  debugprint("We're now deciding to play again or leave.");
   doneStartFrame = millis();
 }
 
@@ -148,16 +149,18 @@ void mouseDragged() {
 }
 
 void mouseReleased() {
+  debugprint("Mouse released");
   if (currentState == STATE_INTRO) {
     if (userPath.size() >= 2) {
       Result val = introDOR.recognize(userPath, true); 
-      println("Recnogized: "+val.name+" Score:" +val.score);
+      //throw new Exception();
+      debugprint("Recnogized: "+val.name+" Score:" +val.score);
       if (val.score > scoreMin) {
-        println("Success!");
+        debugprint("Success!");
         introSuccess = true;
         introSuccessFrame = millis();
       } else if (val.score < scoreMin) {
-        println("Failure!");
+        debugprint("Failure!");
         introFinished = true;
         introFinishedFrame = millis();
         introSuccess = false;
@@ -167,9 +170,9 @@ void mouseReleased() {
   } else if (currentState == STATE_GAME) {
     if (level.userPath.size() >= 2) {
       Result val = level.recognizer.recognize(level.userPath, true); 
-      println("Recnogized: "+val.name+" Score:" +val.score);
+      debugprint("Recnogized: "+val.name+" Score:" +val.score);
       if (val.score > level.scoreMin) {
-        println("Success!");
+        debugprint("Success!");
         level.success = true;
         level.scoreUser = val.score;
       }
@@ -181,16 +184,26 @@ void mouseReleased() {
 
 void mouseClicked() {
   if (currentState == STATE_DONE) {
-    println("the user has clicked on the done screen");
+    debugprint("the user has clicked on the done screen");
     if (actualMouseX() >= 40 && actualMouseX() <= 180 && actualMouseY() >= 300 && actualMouseY() <= 360) {
-      println("return to game");
+      debugprint("return to game");
       goToStateGame(); 
     }
     if (actualMouseX() >= 210 && actualMouseX() <= 360 && actualMouseY() >= 300 && actualMouseY() <= 360) {
-      println("goodbye");
+      debugprint("goodbye");
       exit();
     }
   }
+  
+}
+
+
+
+
+
+
+void debugprint(String toprint) {
+  //println(toprint);
   
 }
 

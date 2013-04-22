@@ -27,15 +27,15 @@ class RCurve {
       lastx = x;
       lasty = y;
     }
-    createPoints(stepsize, curves);
+    createPoints_fromlist(stepsize, curves);
   }
   
   
-  void createPoints(float stepsize, int x1, int y1, int x2, int y2, int x3, int y3, int x4, int y4 ) {
+  void createPoints_manual(float stepsize, int x1, int y1, int x2, int y2, int x3, int y3, int x4, int y4 ) {
     points = createRCurvePoints(stepsize, new float[][] { {x1,y1,x2,y2,x3,y3,x4,y4}});
   }
-  void createPoints(float stepsize, float[][] beziercurves ) {
-    println("Creating points");
+  void createPoints_fromlist(float stepsize, float[][] beziercurves ) {
+    debugprint("debugprint points");
     points = createRCurvePoints(stepsize, beziercurves);
   }
   
@@ -75,14 +75,14 @@ class RCurve {
         lasty = y;
         points.add(x);
         points.add(y);
-        //println("adding point at "+x+", "+y);
+        //debugprint("adding point at "+x+", "+y);
       }
     }
     
     float[] pointlist = new float[points.size()];
     for (int i=0; i<points.size(); i++) {
       pointlist[i] = (points.get(i));
-      //println("adding "+pointlist[i]);
+      //debugprint("adding "+pointlist[i]);
     }
     return pointlist;
     
